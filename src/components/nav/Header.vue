@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <router-link to="/"><img src="/src/assets/image.png" ></router-link>
+      <router-link to="/"><img :src="require('@/assets/image.png')"></router-link>
     </div>
     <nav class="header__nav">
       <ul>

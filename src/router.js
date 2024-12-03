@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Report from "./components/Report.vue";
-import Dashboard from "./components/Dashboard.vue";
-import Expenses from "./components/Expenses.vue";
+import Report from "./components/pages/Report.vue";
+import Dashboard from "./components/pages/Dashboard.vue";
+import Expenses from "./components/pages/Expenses.vue";
 
 
 const router = createRouter({

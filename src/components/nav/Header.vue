@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <router-link to="/">Home</router-link>
+      <router-link to="/"><img src="/src/assets/image.png" ></router-link>
     </div>
     <nav class="header__nav">
       <ul>
@@ -10,6 +10,10 @@
         </li>
         <li>
           <router-link to="/expenses">Expenses</router-link>
+        </li>
+
+        <li>
+          <router-link to="/signup">Register</router-link>
         </li>
       </ul>
     </nav>
@@ -39,7 +43,7 @@ export default {
   align-items: center;
   padding: 0 2rem;
   height: 5rem;
-  background-color: #3cb043;
+  background-color: darkgrey;
   color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;

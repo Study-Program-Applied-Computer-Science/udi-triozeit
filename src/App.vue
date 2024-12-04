@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="flex flex-col">
     <Header />
     <div>
       <router-view />
@@ -32,11 +32,5 @@ body {
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
-}
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 }
 </style>

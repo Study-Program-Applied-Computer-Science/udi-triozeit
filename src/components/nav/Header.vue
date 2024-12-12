@@ -12,9 +12,19 @@
           <router-link to="/expenses">Expenses</router-link>
         </li>
 
-        <li>
+        <li v-if=!isLoggedIn>
           <router-link to="/signup">Register</router-link>
         </li>
+
+        <li  v-if=!isLoggedIn>
+          <router-link to="/login">Login</router-link>
+        </li>
+
+        <li  v-if=isLoggedIn>
+          <router-link to="/login" @click="logout">Logout</router-link>
+        </li>
+
+
       </ul>
     </nav>
   </header>
@@ -25,12 +35,16 @@
 export default {
   name: "HeaderComponent",
   computed: {
-
+    isLoggedIn()
+    {
+      return this.$store.getters.isAuthenticated;
+    }
   },
   methods: {
-    login() {
-
-    },
+    logout()
+    {
+      this.$store.commit("logout");
+    }
   },
 };
 </script>

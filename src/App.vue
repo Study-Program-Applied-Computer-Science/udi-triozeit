@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="min-h-screen flex flex-col">
     <Header />
     <div>
       <router-view />
@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style>
+<!-- <style>
 * {
   box-sizing: border-box;
 }
@@ -39,4 +39,4 @@ body {
   flex-direction: column;
   height: 100%;
 }
-</style>
+</style> -->

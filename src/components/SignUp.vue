@@ -1,9 +1,7 @@
 <template>
   <div class="sign-up">
     <h1>EXPENSE TRACKER</h1>
-    <video class="background-video" autoplay muted loop>
-      <source src="@/assets/6693624-uhd_2160_3840_25fps.mp4" type="video/mp4">
-    </video>
+    
 
     <div class="container">
       <h1>Sign Up Form</h1>
@@ -37,36 +35,44 @@ export default {
       username: "",
       email: "",
       password: "",
-      successMessage: "",
-    }
+      message: "",
+    };
   },
 
-  methods:
-  {
+  methods: {
     signup() {
       if (this.username === "" || this.email === "" || this.password === "") {
-        alert("All Fields are required!!")
-        return
+        alert("All Fields are required!!");
+        return;
       }
 
-      // I need to check if the user already in DB 
+      const userdetails = this.$store.getters["signUp/getUserDetails"];
+      const user = userdetails.find((i) => i.username === this.username);
 
+      if (user) {
+        this.message = "User Already Exists";
+        this.clearDetails();
+        return;
+      }
 
-      this.successMessage = "Sign In successfull!!";
-      alert(`The entered values for the signup are ${this.username} , ${this.email} , ${this.password}`)
-
+      this.$store.commit("signUp/setSignUpDetails", {
+        username: this.username,
+        email: this.email,
+        password: this.password,
+      });
+      this.message = "Sign In successful!!";
+      this.clearDetails();
     },
 
     clearDetails() {
       this.username = "";
       this.email = "";
       this.password = "";
-      this.successMessage = "";
     },
-  }
-}
-
+  },
+};
 </script>
+
 
 
 

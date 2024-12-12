@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <router-link to="/">Home</router-link>
+      <!-- <router-link to="/"><img :src="require('@/assets/image.png')"></router-link> -->
     </div>
     <nav class="header__nav">
       <ul>
@@ -10,6 +10,17 @@
         </li>
         <li>
           <router-link to="/expenses">Expenses</router-link>
+        </li>
+        <li v-if=!isLoggedIn>
+          <router-link to="/signup">Register</router-link>
+        </li>
+
+        <li  v-if=!isLoggedIn>
+          <router-link to="/login">Login</router-link>
+        </li>
+
+        <li  v-if=isLoggedIn>
+          <router-link to="/login" @click="logout">Logout</router-link>
         </li>
       </ul>
     </nav>
@@ -21,12 +32,16 @@
 export default {
   name: "HeaderComponent",
   computed: {
-
+    isLoggedIn()
+    {
+      return this.$store.getters.isAuthenticated;
+    }
   },
   methods: {
-    login() {
-
-    },
+    logout()
+    {
+      this.$store.commit("logout");
+    }
   },
 };
 </script>

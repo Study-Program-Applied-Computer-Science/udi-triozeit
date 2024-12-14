@@ -1,19 +1,50 @@
 {
-  "users": [
-    {
-      "username": "test1",
-      "email": "test1@gmail.com",
-      "password": "$2a$10$HDSNm8ZxEhihDjlUcB73Q.mRJPPyCRsOkM6dHGbq9upOiMrthP/um",
-      "id": 1
-    },
-    {
-      "username": "test3",
-      "email": "test3@gmail.com",
-      "password": "$2a$10$rmtC97N8JJy6V2cC2TaBWeb22zLgFiHG0VUg5MwmZFzuU.uB9ZlQe",
-      "id": 2
-    }
-  ],
-  "expense": [
-    {}
-  ]
+    "users": [
+        {
+            "username": "test1",
+            "email": "test1@gmail.com",
+            "password": "$2a$10$HDSNm8ZxEhihDjlUcB73Q.mRJPPyCRsOkM6dHGbq9upOiMrthP/um",
+            "id": 1
+        },
+        {
+            "username": "test3",
+            "email": "test3@gmail.com",
+            "password": "$2a$10$rmtC97N8JJy6V2cC2TaBWeb22zLgFiHG0VUg5MwmZFzuU.uB9ZlQe",
+            "id": 2
+        }
+    ],
+    "expenses": [
+        {
+            "id": 1,
+            "description": "Rent",
+            "amount": 1000,
+            "createdBy": "Udi",
+            "catgoery": "Housing",
+            "createdAt": "2022-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 2,
+            "description": "Groceries",
+            "amount": 100,
+            "createdBy": "Alex",
+            "catgoery": "Food",
+            "createdAt": "2022-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 3,
+            "description": "Gas",
+            "amount": 50,
+            "createdBy": "Taylor",
+            "catgoery": "Transportation",
+            "createdAt": "2022-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 4,
+            "description": "Electricity",
+            "amount": 100,
+            "createdBy": "Alex",
+            "catgoery": "Utilities",
+            "createdAt": "2022-01-01T00:00:00.000Z"
+        }
+    ]
 }

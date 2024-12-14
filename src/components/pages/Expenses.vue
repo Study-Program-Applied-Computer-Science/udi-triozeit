@@ -1,34 +1,41 @@
 <template>
-    <div class="search-filter-container">
-        <input type="text" v-model="searchQuery" placeholder="Search expenses..." class="search-input" />
-        <label>
-            From:
-            <input type="date" v-model="startDate" class="date-input" />
-        </label>
-        <label>
-            To:
-            <input type="date" v-model="endDate" class="date-input" />
-        </label>
-        <label>
-            Min Price:
-            <input type="number" v-model.number="minPrice" placeholder="Min" class="price-input" />
-        </label>
-        <label>
-            Max Price:
-            <input type="number" v-model.number="maxPrice" placeholder="Max" class="price-input" />
-        </label>
-    </div>
+    <div class="container">
+        <div class="search-filter-container">
+            <label>
+                Search
+                <input type="text" v-model="searchQuery" placeholder="Search expenses..." @input="handleSearch"
+                    class="search-input" />
+            </label>
+            <label>
+                From:
+                <input type="date" v-model="startDate" class="date-input" />
+            </label>
+            <label>
+                To:
+                <input type="date" v-model="endDate" class="date-input" />
+            </label>
+            <label>
+                Min Price:
+                <input type="number" v-model.number="minPrice" placeholder="Min" class="price-input" />
+            </label>
+            <label>
+                Max Price:
+                <input type="number" v-model.number="maxPrice" placeholder="Max" class="price-input" />
+            </label>
+        </div>
 
-    <div>
+        <div>
 
-        <h3 v-if="inCompleteTasks?.length > 0" class="status_info">Expenses</h3>
-        <div class="tasks" v-for="task in inCompleteTasks" v-bind:key="task.id">
-            <Expense v-bind:task="task" v-bind:completed="false" />
+            <h3 v-if="inCompleteTasks?.length > 0" class="status_info">Expenses</h3>
+            <div class="tasks" v-for="task in inCompleteTasks" v-bind:key="task.id">
+                <Expense v-bind:task="task" v-bind:completed="false" />
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+
 import Expense from "./Expense.vue";
 export default {
     name: "ExpensesComponent",
@@ -36,9 +43,22 @@ export default {
         completedTasks: Array,
         // inCompleteTasks: Array,
     },
+    methods: {
+        handleSearch() {
+            console.log("Search Query: ", this.searchQuery);
+            const onSearch = this.dataArray.filter((task) => {
+                return task.text.toLowerCase().includes(this.searchQuery.toLowerCase());
+            });
+
+            this.inCompleteTasks = onSearch;
+        },
+    },
+    mounted() {
+        this.inCompleteTasks = this.dataArray;
+    },
     data() {
         return {
-            inCompleteTasks: [
+            dataArray: [
                 {
                     "text": "Learn Angular",
                     "day": "March 29th at 1.30",
@@ -83,7 +103,8 @@ export default {
                     "createdBy": "abcd@gmail.com",
                     "id": 11
                 }
-            ]
+            ],
+            inCompleteTasks: [],
         };
     },
     components: {
@@ -104,9 +125,15 @@ export default {
     opacity: 0.3;
 }
 
+.container {
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .search-filter-container {
     display: flex;
     flex-wrap: wrap;
+    margin: 20px 0;
     /* Allow elements to wrap if needed */
     gap: 10px;
     /* Add spacing between elements */

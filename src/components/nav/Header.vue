@@ -11,15 +11,15 @@
         <li>
           <router-link to="/expenses">Expenses</router-link>
         </li>
-        <li v-if=!isLoggedIn>
+        <li v-if="!isLoggedIn">
           <router-link to="/signup">Register</router-link>
         </li>
 
-        <li  v-if=!isLoggedIn>
+        <li v-if="!isLoggedIn">
           <router-link to="/login">Login</router-link>
         </li>
 
-        <li  v-if=isLoggedIn>
+        <li v-if="isLoggedIn">
           <router-link to="/login" @click="logout">Logout</router-link>
         </li>
       </ul>
@@ -28,20 +28,17 @@
 </template>
 
 <script>
-
 export default {
   name: "HeaderComponent",
   computed: {
-    isLoggedIn()
-    {
-      return this.$store.getters.isAuthenticated;
-    }
+    isLoggedIn() {
+      return this.$store.getters.checkLoginStatus;
+    },
   },
   methods: {
-    logout()
-    {
+    logout() {
       this.$store.commit("logout");
-    }
+    },
   },
 };
 </script>

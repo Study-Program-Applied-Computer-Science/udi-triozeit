@@ -123,6 +123,27 @@
       "category": "Food",
       "email": "yathish@gmail.com",
       "id": 13
+    },
+    {
+      "title": "nettos",
+      "amount": 1000,
+      "category": "Transport",
+      "email": "yathish@gmail.com",
+      "id": 14
+    },
+    {
+      "title": "rewew",
+      "amount": 145,
+      "category": "Food",
+      "email": "yathish@gmail.com",
+      "id": 15
+    },
+    {
+      "title": "air trip",
+      "amount": 1500,
+      "category": "Transport",
+      "email": "yathish@gmail.com",
+      "id": 16
     }
   ]
 }

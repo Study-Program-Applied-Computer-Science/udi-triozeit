@@ -63,15 +63,20 @@ export default {
   },
   computed: {
     username() {
-      return this.$store.state.username;
+      
+      return this.$store.getters.getUsername; 
     },
     expenses() {
-      return this.$store.state.expenses;
+      
+      return this.$store.getters.filteredExpenses;
     },
   },
   created() {
-    this.$store.dispatch("initializeUser");
-    this.$store.dispatch("fetchExpenses");
+    
+    this.$store.dispatch("initializeUser").then(() => {
+      this.$store.dispatch("fetchUsername"); 
+      this.$store.dispatch("fetchExpenses");
+    });
   },
   methods: {
     async addExpense() {
@@ -83,14 +88,14 @@ export default {
       }
       this.resetForm();
     },
-    async deleteExpense(id) {
+    async deleteExpense(id) { 
       await this.$store.dispatch("deleteExpense", id);
     },
     editExpense(expense) {
-      this.newExpense = { title: expense.title, amount: expense.amount, category: expense.category };
+      this.newExpense = { title: expense.title, amount: expense.amount, category: expense.category,email: expense.email, };
       this.editingId = expense.id;
     },
-    resetForm() {
+    resetForm() { 
       this.newExpense = { title: "", amount: 0, category: "" };
       this.editingId = null;
     },

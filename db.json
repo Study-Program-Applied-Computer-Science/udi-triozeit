@@ -29,6 +29,12 @@
       "email": "newtest@gmail.com",
       "password": "$2a$10$n9nE09oDTSkM5tAs.tczsu4SHlpdsSk6t4IbfT/10AeaOZPddmdwq",
       "id": 5
+    },
+    {
+      "username": "yathish",
+      "email": "yathish@gmail.com",
+      "password": "$2a$10$7olotOlIe57fh3RP1GvZTeHWPhWTe551Z8v6pRLqRqhuqYbPHYq6q",
+      "id": 6
     }
   ],
   "expenses": [
@@ -69,6 +75,55 @@
       "category": "Transport",
       "username": "test24545",
       "id": 6
+    },
+    {
+      "title": "sdasdas",
+      "amount": 45,
+      "category": "Transport",
+      "id": 7
+    },
+    {
+      "title": "sdasdasd",
+      "amount": 78787,
+      "category": "Entertainment",
+      "email": "newtest@gmail.com",
+      "id": 8
+    },
+    {
+      "title": "sdsadsdas",
+      "amount": 787,
+      "category": "Utilities",
+      "email": "newtest@gmail.com",
+      "id": 9
+    },
+    {
+      "title": "testhjgsdhj",
+      "amount": 46546,
+      "category": "Entertainment",
+      "email": "abcd@gmail.com",
+      "id": 10
+    },
+    {
+      "title": "hskadhjaskj",
+      "amount": 555,
+      "category": "Utilities",
+      "email": "abcd@gmail.com",
+      "id": 11
+    },
+    {
+      "title": "hskajdhksjhkd",
+      "amount": 4547,
+      "category": "Food",
+      "email": "abcd@gmail.com",
+      "id": 12
+    },
+    
+    {
+      "title": "rewes",
+      "amount": 101,
+      "category": "Food",
+      "email": "yathish@gmail.com",
+      "id": 21
     }
   ]
 }

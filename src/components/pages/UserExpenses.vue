@@ -1,36 +1,37 @@
 <template>
   <div class="container">
     <div class="card">
-      <h2 class="title">{{ username }}'s Expenses</h2>
+      <h2 class="title">{{ username || "User" }}'s Expenses</h2>
 
+      
       <form @submit.prevent="addExpense" class="form">
-  <input
-    v-model="newExpense.title"
-    placeholder="Expense Title"
-    class="input"
-    required
-  />
-  <input
-    v-model.number="newExpense.amount"
-    placeholder="Amount"
-    type="number"
-    class="input"
-    required
-  />
-  <select v-model="newExpense.category" class="input category-select" required>
-    <option value="" disabled>Select Category</option>
-    <option value="Food">Food</option>
-    <option value="Transport">Transport</option>
-    <option value="Entertainment">Entertainment</option>
-    <option value="Utilities">Utilities</option>
-    <option value="Other">Other</option>
-  </select>
-  <button type="submit" class="btn primary add-btn">
-    {{ editingId ? "Update Expense" : "Add Expense" }}
-  </button>
-</form>
+        <input
+          v-model="newExpense.title"
+          placeholder="Expense Title"
+          class="input"
+          required
+        />
+        <input
+          v-model.number="newExpense.amount"
+          placeholder="Amount"
+          type="number"
+          class="input"
+          required
+        />
+        <select v-model="newExpense.category" class="input category-select" required>
+          <option value="" disabled>Select Category</option>
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Other">Other</option>
+        </select>
+        <button type="submit" class="btn primary add-btn">
+          {{ editingId ? "Update Expense" : "Add Expense" }}
+        </button>
+      </form>
 
-
+      
       <div class="expense-list">
         <div v-for="expense in expenses" :key="expense.id" class="expense-card">
           <div class="expense-info">
@@ -56,69 +57,34 @@
 export default {
   data() {
     return {
-      username: "",
-      expenses: [],
       newExpense: { title: "", amount: 0, category: "" },
       editingId: null,
     };
   },
+  computed: {
+    username() {
+      return this.$store.state.username;
+    },
+    expenses() {
+      return this.$store.state.expenses;
+    },
+  },
   created() {
-    this.username = localStorage.getItem("username") || "test123";
-    this.fetchExpenses();
+    this.$store.dispatch("initializeUser");
+    this.$store.dispatch("fetchExpenses");
   },
   methods: {
-    async fetchExpenses() {
-      try {
-        const response = await fetch("http://localhost:5001/expenses");
-        const data = await response.json();
-        this.expenses = data.filter((expense) => expense.username === this.username);
-      } catch (error) {
-        console.error("Error fetching expenses:", error);
-      }
-    },
     async addExpense() {
       if (this.editingId) {
-        await this.updateExpense();
+        const updatedExpense = { ...this.newExpense, id: this.editingId };
+        await this.$store.dispatch("updateExpense", updatedExpense);
       } else {
-        try {
-          const response = await fetch("http://localhost:5001/expenses", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              ...this.newExpense,
-              username: this.username,
-            }),
-          });
-          const newExpense = await response.json();
-          this.expenses.push(newExpense);
-          this.resetForm();
-        } catch (error) {
-          console.error("Error adding expense:", error);
-        }
+        await this.$store.dispatch("addExpense", this.newExpense);
       }
-    },
-    async updateExpense() {
-      try {
-        await fetch(`http://localhost:5001/expenses/${this.editingId}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...this.newExpense, username: this.username }),
-        });
-        this.fetchExpenses();
-        this.resetForm();
-      } catch (error) {
-        console.error("Error updating expense:", error);
-      }
+      this.resetForm();
     },
     async deleteExpense(id) {
-      try {
-        await fetch(`http://localhost:5001/expenses/${id}`, {
-          method: "DELETE",
-        });
-        this.fetchExpenses();
-      } catch (error) {
-        console.error("Error deleting expense:", error);
-      }
+      await this.$store.dispatch("deleteExpense", id);
     },
     editExpense(expense) {
       this.newExpense = { title: expense.title, amount: expense.amount, category: expense.category };
@@ -130,6 +96,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style scoped>

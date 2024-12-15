@@ -1,24 +1,26 @@
 <template>
-  <div class="container">
-    <div class="card">
-      <h2 class="title">{{ username || "User" }}'s Expenses</h2>
-
-      
-      <form @submit.prevent="addExpense" class="form">
+  <div class="max-w-5xl mx-auto mt-12 p-6">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+      <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">User's Expenses</h2>
+      <form @submit.prevent="addExpense" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 items-center">
         <input
           v-model="newExpense.title"
           placeholder="Expense Title"
-          class="input"
+          class="p-3 border-2 border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
           required
         />
         <input
           v-model.number="newExpense.amount"
           placeholder="Amount"
           type="number"
-          class="input"
+          class="p-3 border-2 border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
           required
         />
-        <select v-model="newExpense.category" class="input category-select" required>
+        <select
+          v-model="newExpense.category"
+          class="p-3 border-2 border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-green-500"
+          required
+        >
           <option value="" disabled>Select Category</option>
           <option value="Food">Food</option>
           <option value="Transport">Transport</option>
@@ -26,24 +28,41 @@
           <option value="Utilities">Utilities</option>
           <option value="Other">Other</option>
         </select>
-        <button type="submit" class="btn primary add-btn">
+        <button
+          type="submit"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+        >
           {{ editingId ? "Update Expense" : "Add Expense" }}
         </button>
-      </form>
-
-      
-      <div class="expense-list">
-        <div v-for="expense in expenses" :key="expense.id" class="expense-card">
-          <div class="expense-info">
-            <span class="expense-title">{{ expense.title }}</span>
-            <span class="expense-tag price-tag">€{{ expense.amount }}</span>
-            <span class="expense-tag category-tag">{{ expense.category || "No Category" }}</span>
+      </form>      
+      <div class="flex flex-col gap-4">
+        <div
+          v-for="expense in expenses"
+          :key="expense.id"
+          class="flex justify-between items-center bg-gray-50 p-6 rounded-lg border-2 border-gray-200 shadow-md"
+        >
+          <div class="text-lg text-gray-800">
+            <span class="font-bold mr-4">{{ expense.title }}</span>
+            <span class="inline-block bg-green-500 text-white rounded-full px-4 py-1 text-sm font-semibold">
+              €{{ expense.amount }}
+            </span>
+            <span
+              class="inline-block bg-blue-500 text-white rounded-full px-4 py-1 ml-4 text-sm font-semibold"
+            >
+              {{ expense.category || "No Category" }}
+            </span>
           </div>
-          <div class="expense-actions">
-            <button @click="editExpense(expense)" class="btn icon-btn edit">
+          <div class="flex gap-2">
+            <button
+              @click="editExpense(expense)"
+              class="bg-blue-100 hover:bg-blue-200 text-blue-600 p-3 rounded-lg transition duration-300"
+            >
               <i class="fas fa-edit"></i>
             </button>
-            <button @click="deleteExpense(expense.id)" class="btn icon-btn delete">
+            <button
+              @click="deleteExpense(expense.id)"
+              class="bg-red-100 hover:bg-red-200 text-red-600 p-3 rounded-lg transition duration-300"
+            >
               <i class="fas fa-trash"></i>
             </button>
           </div>
@@ -105,150 +124,5 @@ export default {
 </script>
 
 <style scoped>
-
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
-
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: #f4f6f9;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 1000px; 
-  margin: 50px auto;
-  padding: 30px; 
-}
-
-.card {
-  background: #fff;
-  padding: 30px; 
-  border-radius: 12px; 
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.title {
-  text-align: center;
-  font-size: 2.2em; 
-  margin-bottom: 30px;
-  color: #333;
-}
-
-.form {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr auto; 
-  gap: 15px; 
-  margin-bottom: 30px;
-  align-items: center; 
-}
-
-.input, .category-select {
-  padding: 12px; 
-  font-size: 1.1em;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-  width: 100%; 
-}
-
-.btn.primary {
-  padding: 15px 20px; 
-  font-size: 1.2em; 
-  font-weight: bold;
-  background-color: #4caf50;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.btn.primary:hover {
-  background-color: #45a049;
-}
-
-.btn.icon-btn {
-  padding: 10px;
-  font-size: 1.4em; 
-}
-
-.btn.edit {
-  color: #2196f3;
-  background-color: #e3f2fd;
-}
-
-.btn.delete {
-  color: #f44336;
-  background-color: #ffebee;
-}
-
-.expense-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; 
-}
-
-.expense-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px; 
-  background: #f9f9f9;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.expense-info {
-  font-size: 1.2em; 
-  color: #333;
-}
-
-.expense-title {
-  font-weight: bold;
-  margin-right: 15px;
-}
-
-.expense-amount {
-  color: #666;
-}
-
-.expense-category {
-  font-style: italic;
-  color: #888;
-}
-.add-btn {
-  padding: 12px 20px; 
-  font-size: 1.1em;
-  font-weight: bold;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.add-btn:hover {
-  background-color: #45a049;
-}
-
-.expense-tag {
-  display: inline-block;
-  padding: 5px 10px;
-  margin: 0 5px;
-  border-radius: 20px;
-  font-size: 0.9em;
-  font-weight: 600;
-  color: #fff;
-  text-align: center;
-}
-
-.price-tag {
-  background-color: #4caf50; 
-}
-
-.category-tag {
-  background-color: #2196f3; 
-}
 </style>

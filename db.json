@@ -117,13 +117,12 @@
       "email": "abcd@gmail.com",
       "id": 12
     },
-    
     {
-      "title": "rewes",
-      "amount": 101,
+      "title": "netto ",
+      "amount": 104,
       "category": "Food",
       "email": "yathish@gmail.com",
-      "id": 21
+      "id": 13
     }
   ]
 }

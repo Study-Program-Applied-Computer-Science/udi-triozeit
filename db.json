@@ -11,9 +11,64 @@
       "email": "test3@gmail.com",
       "password": "$2a$10$rmtC97N8JJy6V2cC2TaBWeb22zLgFiHG0VUg5MwmZFzuU.uB9ZlQe",
       "id": 2
+    },
+    {
+      "username": "test2",
+      "email": "test2@gmail.com",
+      "password": "$2a$10$3bkHVH0omQMbMblo3COqeupb0uweCaZkjAZGXoe.7IARGDy4yXRyq",
+      "id": 3
+    },
+    {
+      "username": "test1234",
+      "email": "abcd@gmail.com",
+      "password": "$2a$10$NKhAEn0c7McTHmjh3pcTHOGszQVH4Cr0GV11e7QdOg285Ois87Sfy",
+      "id": 4
+    },
+    {
+      "username": "test24545",
+      "email": "newtest@gmail.com",
+      "password": "$2a$10$n9nE09oDTSkM5tAs.tczsu4SHlpdsSk6t4IbfT/10AeaOZPddmdwq",
+      "id": 5
     }
   ],
-  "expense": [
-    {}
+  "expenses": [
+    {
+      "title": "Groceries",
+      "amount": 0,
+      "username": "test123",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "Electricity Bill",
+      "amount": 100,
+      "username": "test123"
+    },
+    {
+      "title": "dd",
+      "amount": 0,
+      "username": "test123",
+      "id": 3
+    },
+    {
+      "title": "test1",
+      "amount": 4545,
+      "category": "Food",
+      "username": "test1234",
+      "id": 4
+    },
+    {
+      "title": "test22",
+      "amount": 45451,
+      "username": "test1234",
+      "id": 5
+    },
+    {
+      "title": "sdasdsa",
+      "amount": 4545,
+      "category": "Transport",
+      "username": "test24545",
+      "id": 6
+    }
   ]
 }

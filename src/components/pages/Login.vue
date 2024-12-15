@@ -64,6 +64,10 @@ export default {
         if (passwordResult) {
           this.message = "User Successfuuly Loggedin";
           this.$store.commit("login", currentUserDetails[0].email);
+          //changes made 
+          localStorage.setItem("username", currentUserDetails[0].username);
+          this.$store.commit("login", currentUserDetails[0].email);
+          //
           this.$router.push("/expenses");
         } else {
           this.message = "Entered password is incorrect";

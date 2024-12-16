@@ -1,14 +1,12 @@
 <template>
   <div class="max-w-7xl mx-auto mt-12 p-6">
     <div class="bg-white p-8 rounded-lg shadow-md">
-      <!-- Page Title -->
+      
       <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">
         {{ username }}'s Expenses
       </h2>
-
-      <!-- Flex Container -->
       <div class="flex gap-8">
-        <!-- Expense List (Left Column) -->
+        
         <div class="w-2/3 flex flex-col gap-4">
           <div
             v-for="expense in expenses"
@@ -16,29 +14,25 @@
             class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border-2 border-gray-200 shadow-md"
           >
             <div class="flex items-center gap-4 w-full">
-              <!-- Title -->
-              <span class="font-bold text-lg flex-shrink-0 w-1/4">{{ expense.title }}</span>
-
-              <!-- Amount -->
+              
+              <span class="font-bold text-lg flex-shrink-0 w-1/4">{{ expense.title }}</span>             
               <span
                 class="bg-green-500 text-white rounded-full px-4 py-1 text-sm font-semibold flex-shrink-0 w-1/5 text-center"
               >
                 €{{ expense.amount }}
               </span>
-
-              <!-- Category -->
+              
               <span
                 class="bg-blue-500 text-white rounded-full px-4 py-1 text-sm font-semibold flex-shrink-0 w-1/5 text-center"
               >
                 {{ expense.category || "No Category" }}
               </span>
 
-              <!-- Date -->
               <span class="text-gray-600 text-sm w-1/4 text-right flex-shrink-0">
                 {{ formatDateTime(expense.dateTime) }}
               </span>
             </div>
-            <!-- Edit/Delete Buttons -->
+            
             <div class="flex gap-2">
               <button
                 @click="editExpense(expense)"
@@ -55,7 +49,6 @@
             </div>
           </div>
 
-          <!-- Add Expense Button -->
           <div class="flex justify-center mt-4">
             <button
               @click="openModal()"
@@ -65,16 +58,14 @@
             </button>
           </div>
         </div>
-
-        <!-- Right Section: Summary -->
+        
         <div class="w-1/3 space-y-6">
-          <!-- Total Expenses -->
+          
           <div class="bg-green-100 p-6 rounded-lg shadow-lg">
             <h3 class="text-2xl font-bold text-green-700">Total Expenses</h3>
             <p class="text-4xl font-semibold text-gray-800 mt-2">€{{ totalExpenses }}</p>
           </div>
 
-          <!-- Category Breakdown -->
           <div class="bg-blue-100 p-6 rounded-lg shadow-lg">
             <h3 class="text-2xl font-bold text-blue-700">Category Breakdown</h3>
             <ul class="mt-4 space-y-3">
@@ -89,7 +80,6 @@
             </ul>
           </div>
 
-          <!-- Today's Expenses -->
           <div class="bg-yellow-100 p-6 rounded-lg shadow-lg">
             <h3 class="text-2xl font-bold text-yellow-700">Today's Expenses</h3>
             <div v-if="todayExpenses.length > 0" class="mt-4 space-y-2">
@@ -108,10 +98,9 @@
       </div>
     </div>
 
-    <!-- Modal -->
     <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div class="bg-white p-8 rounded-lg w-full max-w-md shadow-lg relative">
-        <!-- Close Button -->
+        
         <button
           @click="closeModal"
           class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
@@ -119,19 +108,14 @@
           &times;
         </button>
 
-        <!-- Modal Title -->
         <h3 class="text-2xl font-bold mb-2 text-center">
           {{ editingId ? "Update Expense" : "Add Expense" }}
         </h3>
 
-        <!-- Error Message -->
         <p v-if="errorMessage" class="text-red-500 text-sm font-semibold text-center mb-2">
           {{ errorMessage }}
         </p>
-
-        <!-- Form -->
         <form @submit.prevent="addExpense" class="flex flex-col gap-4">
-          <!-- Title Input -->
           <input
             v-model="newExpense.title"
             @input="validateInput"
@@ -139,8 +123,6 @@
             class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
             required
           />
-
-          <!-- Amount Input -->
           <input
             v-model.number="newExpense.amount"
             placeholder="Amount"
@@ -148,8 +130,6 @@
             class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
             required
           />
-
-          <!-- Category Selection -->
           <select
             v-model="newExpense.category"
             class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
@@ -163,7 +143,6 @@
             <option value="Other">Other</option>
           </select>
 
-          <!-- Date and Time -->
           <input
             v-model="newExpense.dateTime"
             type="datetime-local"
@@ -171,7 +150,6 @@
             required
           />
 
-          <!-- Buttons -->
           <div class="flex justify-end gap-2">
             <button
               @click="closeModal"
@@ -199,7 +177,7 @@ export default {
   data() {
     return {
       showModal: false,
-      newExpense: { title: "", amount: 0, category: "", dateTime: "" }, // Added dateTime field
+      newExpense: { title: "", amount: 0, category: "", dateTime: "" }, 
       editingId: null,
       errorMessage: "",
     };
@@ -224,8 +202,8 @@ export default {
       }, {});
     },
     todayExpenses() {
-    // Filter expenses where the date matches today's date
-    const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+    
+    const today = new Date().toISOString().split("T")[0]; 
     return this.expenses.filter(expense => {
       return expense.dateTime && expense.dateTime.startsWith(today);
     });
@@ -239,13 +217,13 @@ export default {
     openModal(expense = null) {
       this.errorMessage = "";
       if (expense) {
-        // Populate fields when editing an expense
+        
         this.editingId = expense.id;
         this.newExpense = { ...expense };
       } else {
-        // Set the dateTime to current date when adding a new expense
+        
         this.resetForm();
-        this.newExpense.dateTime = new Date().toISOString().slice(0, 16); // Format for datetime-local input
+        this.newExpense.dateTime = new Date().toISOString().slice(0, 16); 
       }
       this.showModal = true;
     },
@@ -255,29 +233,29 @@ export default {
       this.errorMessage = "";
     },
     async addExpense() {
-      const title = this.newExpense.title.trim(); // Trim the input to remove whitespace
+      const title = this.newExpense.title.trim(); 
       if (!title) {
         this.errorMessage = "Expense Title cannot be empty or contain only spaces!";
         return;
       }
 
-      this.newExpense.title = title; // Ensure title is trimmed before saving
+      this.newExpense.title = title; 
 
       if (!this.newExpense.dateTime) {
-        // Set the current dateTime if not provided
+        
         this.newExpense.dateTime = new Date().toISOString();
       }
 
       if (this.editingId) {
-        // Update the existing expense
+        
         const updatedExpense = { ...this.newExpense, id: this.editingId };
         await this.$store.dispatch("updateExpense", updatedExpense);
       } else {
-        // Add a new expense
+        
         await this.$store.dispatch("addExpense", this.newExpense);
       }
 
-      this.closeModal(); // Close modal after saving
+      this.closeModal(); 
     },
     async deleteExpense(id) {
       await this.$store.dispatch("deleteExpense", id);
@@ -290,7 +268,7 @@ export default {
       this.editingId = null;
     },
     formatDateTime(dateTime) {
-      // Helper method to format dateTime for display
+      
       return new Date(dateTime).toLocaleString();
     },
   },

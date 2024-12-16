@@ -164,6 +164,35 @@
       "dateTime": "2024-12-16T01:36",
       "email": "yathish@gmail.com",
       "id": 24
+    },
+    {
+      "title": "Dummy Expenses",
+      "amount": 10,
+      "category": "Entertainment",
+      "dateTime": "2024-12-22T13:15",
+      "email": null,
+      "id": 25,
+      "split": [
+        {
+          "id": 1,
+          "amount": 5,
+          "notes": "For food"
+        },
+        {
+          "id": 2,
+          "amount": 5,
+          "notes": "For drinks"
+        }
+      ]
+    },
+    {
+      "title": "TEst split 2",
+      "amount": 300,
+      "category": "Entertainment",
+      "dateTime": "2024-12-13T15:58",
+      "split": [],
+      "email": null,
+      "id": 27
     }
   ]
 }

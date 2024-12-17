@@ -1,7 +1,6 @@
 <template>
   <div class="max-w-7xl mx-auto mt-12 p-6">
     <div class="bg-white p-8 rounded-lg shadow-md">
-
       <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">
         {{ username }}'s Expenses
       </h2>
@@ -151,6 +150,8 @@ export default {
       return this.$store.getters.getUsername || "User";
     },
     expenses() {
+      // why is this required to be a function?
+      // alredy filtered expenses are stored in the store
       return this.$store.getters.filteredExpenses;
     },
     totalExpenses() {
@@ -172,9 +173,12 @@ export default {
       });
     },
   },
+  mounted() {
+    this.$store.dispatch("fetchExpenses");
+  },
   created() {
     this.$store.dispatch("initializeUser");
-    this.$store.dispatch("fetchExpenses");
+    // this.$store.dispatch("fetchExpenses");
   },
   methods: {
     // handle deatil view of expense (deatil model view)

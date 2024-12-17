@@ -51,7 +51,18 @@ export default {
         console.log(passwordResult);
         if (passwordResult) {
           this.message = "User Successfuuly Loggedin";
-          this.$store.commit("login", currentUserDetails[0].email, currentUserDetails[0].username);
+          let user = {
+            ...currentUserDetails[0],
+            lastLogin: new Date().toLocaleString(),
+          };
+          await fetch(`${localHost}/users/${currentUserDetails[0].id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+          });
+          this.$store.commit("login", currentUserDetails[0].email, currentUserDetails[0].username, user.lastLogin);
           //changes made 
           // localStorage.setItem("username", currentUserDetails[0].username);
           // this.$store.commit("login", currentUserDetails[0].email);

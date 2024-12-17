@@ -2,6 +2,12 @@
     <div v-if="expense && showDetailModal"
         class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white p-8 rounded-lg w-full max-w-2xl shadow-lg relative">
+            <div>
+                <button @click="closeModal"
+                    class="absolute top-2 right-2 text-black px-2 py-1 rounded hover:bg-red-600 transition duration-300">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
             <h1 class="text-2xl font-bold mb-4">Expense Details: {{ expense.title }}</h1>
             <div class="flex mb-2 items-baseline">
                 <h2 class="text-xl font-semibold">Date:</h2>
@@ -20,7 +26,8 @@
                     <h2 class="text-xl font-semibold mr-2">Split:</h2>
                     <div v-if="calculateSplit(expense) > 0" class="flex items-baseline">
                         <p class="text-red-500">Yet to split: € {{ calculateSplit(expense) }}</p>
-                        <button @click="addSplit" class="bg-green-500 text-white px-4 py-2 rounded mt-4 ml-2">Add
+                        <button @click="addSplit"
+                            class="bg-green-500 text-white px-4 py-2 rounded ml-2 hover:bg-green-600 transition duration-300">Add
                             Split</button>
                     </div>
                 </div>
@@ -28,18 +35,19 @@
                 <div v-if="showSplitForm" class="mb-4">
                     <h3 class="text-lg font-semibold mb-2">Add Split</h3>
                     <div class="mb-2">
-                        <label class="block text-sm font-medium text-gray-700">Amount</label>
-                        <input v-model="newSplit.amount" type="number"
-                            class="mt-1 w-full border-black border-2 rounded-md shadow-sm" />
+                        <label class="block text-md font-medium text-gray-700">Amount</label>
+                        <input v-model="newSplit.amount" type="number" placeholder="Enter amount"
+                            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
                     </div>
                     <div class="mb-2">
-                        <label class="block text-sm font-medium text-gray-700">Notes</label>
-                        <input v-model="newSplit.notes" type="text"
-                            class="mt-1 w-full border-black border-2 rounded-md shadow-sm" />
+                        <label class="block text-md font-medium text-gray-700">Notes</label>
+                        <input v-model="newSplit.notes" type="text" placeholder="Enter notes"
+                            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
                     </div>
-                    <button @click="saveSplit" class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Save</button>
+                    <button @click="saveSplit"
+                        class="bg-blue-500 text-white px-4 py-2 rounded mt-2 hover:bg-blue-600 transition duration-300">Save</button>
                     <button @click="() => this.showSplitForm = !this.showSplitForm"
-                        class="bg-blue-500 text-white px-4 py-2 rounded mt-2 ml-2">Cancel</button>
+                        class="bg-gray-500 text-white px-4 py-2 rounded mt-2 ml-2 hover:bg-gray-600 transition duration-300">Cancel</button>
                 </div>
 
                 <div>
@@ -56,15 +64,18 @@
                                 <td class="border px-4 py-2">€ {{ splitItem.amount }}</td>
                                 <td class="border px-4 py-2">{{ splitItem.notes }}</td>
                                 <td class="border px-4 py-2">
-                                    <button @click="editSplit(index)" class="text-blue-500">Edit</button>
-                                    <button @click="deleteSplit(index)" class="text-red-500 ml-2">Delete</button>
+                                    <button @click="editSplit(index)"
+                                        class="text-blue-500 hover:text-blue-700 transition duration-300">Edit</button>
+                                    <button @click="deleteSplit(index)"
+                                        class="text-red-500 ml-2 hover:text-red-700 transition duration-300">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <button @click="closeModal" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Close</button>
+            <button @click="closeModal"
+                class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600 transition duration-300">Close</button>
         </div>
     </div>
 </template>
@@ -145,4 +156,9 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+    transition: opacity 0.5s;
+}
+</style>

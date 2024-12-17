@@ -40,7 +40,10 @@
       "username": "MAnu",
       "email": "testlogin@gmail.com",
       "password": "$2a$10$iSWwnlnnI1KnPqXSCV/.Auhm7EjaM.VkdoiGa9a9ECRQAG6r0hP6m",
-      "id": 7
+      "id": 7,
+      "streak": 2,
+      "addLimit": 7,
+      "lastLogin": "12/17/2024, 6:21:31 PM"
     }
   ],
   "expenses": [
@@ -228,14 +231,9 @@
       "dateTime": "2024-12-17T00:38",
       "split": [
         {
-          "amount": 49,
+          "amount": 151,
           "notes": "test",
-          "id": 1734402615296
-        },
-        {
-          "amount": 1,
-          "notes": "1",
-          "id": 1734402620238
+          "id": 1734457170884
         }
       ],
       "email": "testlogin@gmail.com",
@@ -258,6 +256,15 @@
       "split": [],
       "email": null,
       "id": 30
+    },
+    {
+      "title": "$",
+      "amount": 5,
+      "category": "Transport",
+      "dateTime": "2024-12-17T19:39",
+      "split": [],
+      "email": "testlogin@gmail.com",
+      "id": 31
     }
   ]
 }

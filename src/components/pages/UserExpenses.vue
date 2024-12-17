@@ -6,7 +6,7 @@
       </h2>
       <div class="flex gap-8">
 
-        <div class="w-2/3 flex flex-col gap-4">
+        <div class="w-2/3 flex flex-col gap-4 justify-around">
           <div v-for="expense in expenses" :key="expense.id" @dblclick="handleToggleDetailView(expense)"
             class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border-2 border-gray-200 shadow-md">
             <div class="flex items-center gap-4 w-full" @dblclick="handleToggleDetailView(expense)">
@@ -44,6 +44,14 @@
               class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-lg rounded-lg shadow-md transition duration-300">
               Add Expense
             </button>
+          </div>
+
+          <div class="flex justify-center mt-4 w-full">
+            <h3 class="text-2xl font-bold">Streak Information</h3>
+            <p class="text-4xl font-semibold mt-2">
+              {{ streak }} days
+            </p>
+
           </div>
         </div>
 
@@ -131,6 +139,8 @@
 
 <script>
 import ExpenseDetail from './ExpenseDetail.vue';
+// import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -172,6 +182,18 @@ export default {
         return expense.dateTime && expense.dateTime.startsWith(today);
       });
     },
+    // ...mapGetters(['getLastLogin']),
+    // streak() {
+    //   console.log(this.getLastLogin, "hello")
+    //   const lastLogin = new Date(this.getLastLogin);
+    //   const today = new Date();
+    //   const diffTime = Math.abs(today - lastLogin);
+    //   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    //   return diffDays === 1 ? this.$store.getters.getStreak + 1 : 0;
+    // },
+    // addLimit() {
+    //   return this.streak;
+    // }
   },
   created() {
     this.$store.dispatch("initializeUser");

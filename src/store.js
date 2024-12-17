@@ -12,6 +12,7 @@ const store = createStore({
       currentUser: null,
       username: null,
       isLoggedIn: false,
+      lastLogin: null,
       expenses: [],
     };
   },
@@ -26,13 +27,18 @@ const store = createStore({
     getUsername(state) {
       return state.username || "User";
     },
+    getLastLogin(state) {
+      return state.lastLogin;
+    }
   },
 
   mutations: {
-    login(state, email, username) {
+    login(state, email, username, lastLogin) {
+      console.log("login mutation called", email, username, lastLogin);
       state.isLoggedIn = true;
       state.currentUser = email;
       state.username = username;
+      state.lastLogin = lastLogin;
       const encodeemail = window.btoa(email);
       sessionStorage.setItem("user", encodeemail);
     },
@@ -40,10 +46,14 @@ const store = createStore({
       state.isLoggedIn = false;
       state.currentUser = null;
       state.username = null;
+      state.lastLogin = null;
       sessionStorage.removeItem("user");
     },
     setUsername(state, username) {
       state.username = username;
+    },
+    setLastLogin(state, lastLogin) {
+      state.lastLogin = lastLogin;
     },
     setExpenses(state, expenses) {
       state.expenses = expenses;
@@ -66,26 +76,34 @@ const store = createStore({
     async updateSplitExpenses(state, updatedSplitValue) {
       await util.updateSplitExpenses(updatedSplitValue)
     },
-    initializeUser({ commit, dispatch }) {
-      const encodedUser = sessionStorage.getItem("user");
-      if (encodedUser) {
-        const email = window.atob(encodedUser);
-        commit("login", email);
-        dispatch("fetchUsername");
-      }
+    initializeUser({ dispatch }) {
+      dispatch("fetchUsername");
+      // const encodedUser = sessionStorage.getItem("user");
+      // if (encodedUser) {
+      //   const email = window.atob(encodedUser);
+      //   commit("login", email);
+      //   dispatch("fetchUsername");
+      // }
     },
 
-    async fetchUsername({ commit, state }) {
+    async fetchUsername({ commit }) {
       try {
         const response = await fetch("http://localhost:5001/users");
         const users = await response.json();
 
-        const user = users.find((user) => user.email === state.currentUser);
-        if (user) {
-          commit("setUsername", user.username);
-        } else {
-          // why is this required 
-          commit("setUsername", "User");
+        const encodedUser = sessionStorage.getItem("user");
+        if (encodedUser) {
+          const email = window.atob(encodedUser);
+          const user = users.find((user) => user.email === email);
+          console.log("user", user);
+          if (user) {
+            commit("login", user.email);
+            commit("setLastLogin", user.lastLogin);
+            commit("setUsername", user.username);
+          } else {
+            // why is this required 
+            commit("setUsername", "User");
+          }
         }
       } catch (error) {
         console.error("Error fetching username:", error);

@@ -35,6 +35,12 @@
       "email": "yathish@gmail.com",
       "password": "$2a$10$7olotOlIe57fh3RP1GvZTeHWPhWTe551Z8v6pRLqRqhuqYbPHYq6q",
       "id": 6
+    },
+    {
+      "username": "MAnu",
+      "email": "testlogin@gmail.com",
+      "password": "$2a$10$iSWwnlnnI1KnPqXSCV/.Auhm7EjaM.VkdoiGa9a9ECRQAG6r0hP6m",
+      "id": 7
     }
   ],
   "expenses": [
@@ -181,7 +187,7 @@
         {
           "id": 2,
           "amount": 5,
-          "notes": "For drinks"
+          "notes": "nothing"
         }
       ]
     },
@@ -190,9 +196,68 @@
       "amount": 300,
       "category": "Entertainment",
       "dateTime": "2024-12-13T15:58",
-      "split": [],
+      "split": [
+        {
+          "amount": 50,
+          "notes": "test add update",
+          "id": 1734398497348
+        },
+        {
+          "amount": 20,
+          "notes": "test 20 ",
+          "id": 1734398865307
+        },
+        {
+          "amount": 30,
+          "notes": "notes 30 added",
+          "id": 1734399022220
+        },
+        {
+          "amount": 40,
+          "notes": "here is my 40 ",
+          "id": 1734399106847
+        }
+      ],
       "email": null,
       "id": 27
+    },
+    {
+      "title": "Test new",
+      "amount": 200,
+      "category": "Entertainment",
+      "dateTime": "2024-12-17T00:38",
+      "split": [
+        {
+          "amount": 49,
+          "notes": "test",
+          "id": 1734402615296
+        },
+        {
+          "amount": 1,
+          "notes": "1",
+          "id": 1734402620238
+        }
+      ],
+      "email": "testlogin@gmail.com",
+      "id": 28
+    },
+    {
+      "title": "test update her",
+      "amount": 500,
+      "category": "Food",
+      "dateTime": "2024-12-17T01:32",
+      "split": [],
+      "email": null,
+      "id": 29
+    },
+    {
+      "title": "test update",
+      "amount": 10000,
+      "category": "Utilities",
+      "dateTime": "2024-12-17T01:34",
+      "split": [],
+      "email": null,
+      "id": 30
     }
   ]
 }

@@ -173,12 +173,9 @@ export default {
       });
     },
   },
-  mounted() {
-    this.$store.dispatch("fetchExpenses");
-  },
   created() {
     this.$store.dispatch("initializeUser");
-    // this.$store.dispatch("fetchExpenses");
+    this.$store.dispatch("fetchExpenses");
   },
   methods: {
     // handle deatil view of expense (deatil model view)

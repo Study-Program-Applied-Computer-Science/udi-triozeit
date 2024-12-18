@@ -7,7 +7,10 @@
       <div class="flex gap-8">
 
         <div class="w-2/3 flex flex-col gap-4 justify-around">
-          <div v-for="expense in expenses" :key="expense.id" @dblclick="handleToggleDetailView(expense)"
+          <!-- search input  -->
+          <input type="text" v-model="searchExpense" placeholder="Enter amount"
+            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+          <div v-for="expense in searchAndFilter" :key="expense.id" @dblclick="handleToggleDetailView(expense)"
             class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border-2 border-gray-200 shadow-md">
             <div class="flex items-center gap-4 w-full" @dblclick="handleToggleDetailView(expense)">
 
@@ -150,12 +153,69 @@ export default {
       newExpense: { title: "", amount: 0, category: "", dateTime: "", split: [] },
       editingId: null,
       errorMessage: "",
+      searchExpense: "",
+      selectedCategory: "",
+      startDate: "",
+      endDate: "",
+      sortOrder: "asc"
     };
   },
   components: {
     ExpenseDetail,
   },
   computed: {
+    searchAndFilter() {
+      console.log("Computed searchAndFilter method called", this.searchExpense);
+      let filterData = this.$store.getters.filteredExpenses;
+      if (this.searchExpense) {
+        filterData = filterData.filter((expense) => {
+          return expense.title
+            .toLowerCase()
+            .includes(this.searchExpense?.toLowerCase());
+        });
+      }
+
+      if (this.selectedCategory) {
+        console.log("Category Filter");
+        filterData = filterData.filter((expense) => {
+          return expense.category === this.selectedCategory;
+        })
+      }
+
+      if (this.startDate || this.endDate) {
+        if (this.startDate && this.endDate) {
+          filterData = filterData.filter((expense) => {
+            return expense.day >= this.startDate && expense.day <= this.endDate;
+          })
+        }
+
+        else if (this.startDate) {
+          filterData = filterData.filter((expense) => {
+            return expense.day >= this.startDate;
+          })
+        }
+        else {
+          filterData = filterData.filter((expense) => {
+            return expense.day <= this.endDate;
+          })
+
+        }
+      }
+
+      if (this.sortOrder) {
+        filterData.sort((a, b) => {
+          if (this.sortOrder === "asc") {
+            return a.amount - b.amount
+          }
+          else {
+            return b.amount - a.amount
+          }
+        })
+      }
+      console.log(filterData, "filterData")
+      return filterData;
+    },
+
     username() {
       return this.$store.getters.getUsername || "User";
     },
@@ -195,6 +255,7 @@ export default {
     //   return this.streak;
     // }
   },
+
   created() {
     this.$store.dispatch("initializeUser");
     this.$store.dispatch("fetchExpenses");

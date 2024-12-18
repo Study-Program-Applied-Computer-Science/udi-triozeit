@@ -1,12 +1,9 @@
 import { createStore } from "vuex";
-import signUpmodules from "./store/modules/SignUpModule.js";
 import * as util from "./utils.js";
 // import { localHost } from "./urls";
 
 const store = createStore({
-  modules: {
-    signUp: signUpmodules,
-  },
+  modules: {},
   state() {
     return {
       currentUser: null,
@@ -22,14 +19,16 @@ const store = createStore({
       return state.isLoggedIn;
     },
     filteredExpenses(state) {
-      return state.expenses.filter((expense) => expense.email === state.currentUser);
+      return state.expenses.filter(
+        (expense) => expense.email === state.currentUser
+      );
     },
     getUsername(state) {
       return state.username || "User";
     },
     getLastLogin(state) {
       return state.lastLogin;
-    }
+    },
   },
 
   mutations: {
@@ -62,7 +61,9 @@ const store = createStore({
       state.expenses.push(expense);
     },
     updateExpense(state, updatedExpense) {
-      const index = state.expenses.findIndex((exp) => exp.id === updatedExpense.id);
+      const index = state.expenses.findIndex(
+        (exp) => exp.id === updatedExpense.id
+      );
       if (index !== -1) {
         state.expenses.splice(index, 1, updatedExpense);
       }
@@ -74,7 +75,7 @@ const store = createStore({
 
   actions: {
     async updateSplitExpenses(state, updatedSplitValue) {
-      await util.updateSplitExpenses(updatedSplitValue)
+      await util.updateSplitExpenses(updatedSplitValue);
     },
     initializeUser({ dispatch }) {
       dispatch("fetchUsername");
@@ -101,7 +102,7 @@ const store = createStore({
             commit("setLastLogin", user.lastLogin);
             commit("setUsername", user.username);
           } else {
-            // why is this required 
+            // why is this required
             commit("setUsername", "User");
           }
         }
@@ -112,13 +113,14 @@ const store = createStore({
     },
 
     async fetchExpenses({ commit, state }) {
-
       try {
         console.log("fetching expenses for user:", state.currentUser);
         const response = await fetch("http://localhost:5001/expenses");
         const data = await response.json();
 
-        const userExpenses = data.filter((expense) => expense.email === state.currentUser);
+        const userExpenses = data.filter(
+          (expense) => expense.email === state.currentUser
+        );
         commit("setExpenses", userExpenses);
       } catch (error) {
         console.error("Error fetching expenses:", error);
@@ -144,11 +146,14 @@ const store = createStore({
           email: state.currentUser,
         };
 
-        const response = await fetch(`http://localhost:5001/expenses/${updatedExpense.id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
+        const response = await fetch(
+          `http://localhost:5001/expenses/${updatedExpense.id}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to update expense");

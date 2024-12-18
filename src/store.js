@@ -26,6 +26,12 @@ const store = createStore({
     getUsername(state) {
       return state.username || "User";
     },
+    getUserEmail(state) {
+      return state.currentUser;
+    },
+    // getUserDetail(state) {
+    //   return state.userDetail;
+    // },
     getLastLogin(state) {
       return state.lastLogin;
     },
@@ -33,7 +39,6 @@ const store = createStore({
 
   mutations: {
     login(state, email, username, lastLogin) {
-      console.log("login mutation called", email, username, lastLogin);
       state.isLoggedIn = true;
       state.currentUser = email;
       state.username = username;
@@ -48,6 +53,9 @@ const store = createStore({
       state.lastLogin = null;
       sessionStorage.removeItem("user");
     },
+    // setUserDeatil(state, user) {
+    //   state.userDetail = user;
+    // },
     setUsername(state, username) {
       state.username = username;
     },
@@ -77,6 +85,7 @@ const store = createStore({
     async updateSplitExpenses(state, updatedSplitValue) {
       await util.updateSplitExpenses(updatedSplitValue);
     },
+
     initializeUser({ dispatch }) {
       dispatch("fetchUsername");
       // const encodedUser = sessionStorage.getItem("user");

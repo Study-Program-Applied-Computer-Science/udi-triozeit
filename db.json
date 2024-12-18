@@ -226,14 +226,19 @@
     },
     {
       "title": "Test new",
-      "amount": 200,
+      "amount": 300,
       "category": "Entertainment",
       "dateTime": "2024-12-17T00:38",
       "split": [
         {
-          "amount": 151,
+          "amount": 45,
           "notes": "test",
-          "id": 1734457170884
+          "id": 1734482987100
+        },
+        {
+          "amount": 155,
+          "notes": "test 160",
+          "id": 1734483006926
         }
       ],
       "email": "testlogin@gmail.com",

@@ -1,5 +1,7 @@
 import { createStore } from "vuex";
 import signUpmodules from "./store/modules/SignUpModule.js";
+import * as util from "./utils.js";
+// import { localHost } from "./urls";
 
 const store = createStore({
   modules: {
@@ -7,10 +9,11 @@ const store = createStore({
   },
   state() {
     return {
-      currentUser: null, 
-      username: null,    
+      currentUser: null,
+      username: null,
       isLoggedIn: false,
-      expenses: [], 
+      lastLogin: null,
+      expenses: [],
     };
   },
 
@@ -22,14 +25,20 @@ const store = createStore({
       return state.expenses.filter((expense) => expense.email === state.currentUser);
     },
     getUsername(state) {
-      return state.username || "User"; 
+      return state.username || "User";
     },
+    getLastLogin(state) {
+      return state.lastLogin;
+    }
   },
 
   mutations: {
-    login(state, email) {
+    login(state, email, username, lastLogin) {
+      console.log("login mutation called", email, username, lastLogin);
       state.isLoggedIn = true;
       state.currentUser = email;
+      state.username = username;
+      state.lastLogin = lastLogin;
       const encodeemail = window.btoa(email);
       sessionStorage.setItem("user", encodeemail);
     },
@@ -37,10 +46,14 @@ const store = createStore({
       state.isLoggedIn = false;
       state.currentUser = null;
       state.username = null;
+      state.lastLogin = null;
       sessionStorage.removeItem("user");
     },
     setUsername(state, username) {
       state.username = username;
+    },
+    setLastLogin(state, lastLogin) {
+      state.lastLogin = lastLogin;
     },
     setExpenses(state, expenses) {
       state.expenses = expenses;
@@ -60,34 +73,48 @@ const store = createStore({
   },
 
   actions: {
-    initializeUser({ commit, dispatch }) {
-      const encodedUser = sessionStorage.getItem("user");
-      if (encodedUser) {
-        const email = window.atob(encodedUser);
-        commit("login", email);
-        dispatch("fetchUsername"); 
-      }
+    async updateSplitExpenses(state, updatedSplitValue) {
+      await util.updateSplitExpenses(updatedSplitValue)
+    },
+    initializeUser({ dispatch }) {
+      dispatch("fetchUsername");
+      // const encodedUser = sessionStorage.getItem("user");
+      // if (encodedUser) {
+      //   const email = window.atob(encodedUser);
+      //   commit("login", email);
+      //   dispatch("fetchUsername");
+      // }
     },
 
-    async fetchUsername({ commit, state }) {
+    async fetchUsername({ commit }) {
       try {
-        const response = await fetch("http://localhost:5001/users"); 
+        const response = await fetch("http://localhost:5001/users");
         const users = await response.json();
 
-        const user = users.find((user) => user.email === state.currentUser);
-        if (user) {
-          commit("setUsername", user.username);
-        } else {
-          commit("setUsername", "User"); 
+        const encodedUser = sessionStorage.getItem("user");
+        if (encodedUser) {
+          const email = window.atob(encodedUser);
+          const user = users.find((user) => user.email === email);
+          console.log("user", user);
+          if (user) {
+            commit("login", user.email);
+            commit("setLastLogin", user.lastLogin);
+            commit("setUsername", user.username);
+          } else {
+            // why is this required 
+            commit("setUsername", "User");
+          }
         }
       } catch (error) {
         console.error("Error fetching username:", error);
-        commit("setUsername", "User"); 
+        commit("setUsername", "User");
       }
     },
 
     async fetchExpenses({ commit, state }) {
+
       try {
+        console.log("fetching expenses for user:", state.currentUser);
         const response = await fetch("http://localhost:5001/expenses");
         const data = await response.json();
 
@@ -114,19 +141,19 @@ const store = createStore({
       try {
         const payload = {
           ...updatedExpense,
-          email: state.currentUser, 
+          email: state.currentUser,
         };
-  
+
         const response = await fetch(`http://localhost:5001/expenses/${updatedExpense.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         });
-  
+
         if (!response.ok) {
           throw new Error("Failed to update expense");
         }
-  
+
         const data = await response.json();
         commit("updateExpense", data);
       } catch (error) {

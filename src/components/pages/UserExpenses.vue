@@ -50,11 +50,13 @@
           </div>
 
           <div class="flex justify-center mt-4 w-full">
-            <h3 class="text-2xl font-bold">Streak Information</h3>
-            <p class="text-4xl font-semibold mt-2">
-              {{ streak }} days
-            </p>
-
+            <div>
+              <h3 class="text-2xl font-bold">Streak Information</h3>
+              <p class="text-4xl font-semibold mt-2">{{ streak }} days</p>
+              <p class="text-gray-600 mt-2" v-if="streakMessage">{{ streakMessage }}</p>
+              <h3 class="text-2xl font-bold mt-4">Daily Add Limit</h3>
+              <p class="text-4xl font-semibold mt-2">{{ addLimit }} expenses</p>
+            </div>
           </div>
         </div>
 
@@ -147,6 +149,10 @@ import ExpenseDetail from './ExpenseDetail.vue';
 export default {
   data() {
     return {
+      streak: 0,
+      addLimit: 5,
+      streakMessage: "",
+      user: {},
       showModal: false,
       showDetailModal: false,
       selectedExpense: null,
@@ -219,6 +225,9 @@ export default {
     username() {
       return this.$store.getters.getUsername || "User";
     },
+    useremail() {
+      return this.$store.getters.getUserEmail;
+    },
     expenses() {
       // why is this required to be a function?
       // alredy filtered expenses are stored in the store
@@ -259,8 +268,66 @@ export default {
   created() {
     this.$store.dispatch("initializeUser");
     this.$store.dispatch("fetchExpenses");
+    this.fetchUserData();
   },
   methods: {
+    async fetchUserData() {
+      try {
+        const response = await fetch("http://localhost:5001/users");
+        const data = await response.json();
+
+        data.find((user) => {
+          if (user.email === this.useremail) {
+            this.user = user;
+          }
+        });
+        console.log(this.user, "data")
+        // this.user = data;
+        this.updateStreak();
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    },
+
+    updateStreak() {
+      const today = new Date();
+      const lastLogin = new Date(this.user.lastLogin);
+
+      const isSameDay = today.toDateString() === lastLogin.toDateString();
+      const isConsecutive = (new Date(today.toDateString()) - new Date(lastLogin.toDateString())) / (1000 * 60 * 60 * 24) === 1;
+      console.log(isSameDay, isConsecutive, "isSameDay, isConsecutive")
+      if (isSameDay) {
+        this.streakMessage = "You have already logged in today.";
+      } else if (isConsecutive) {
+        this.user.streak += 1;
+        this.streakMessage = "Your streak continues!";
+      } else {
+        this.user.streak = 0;
+        this.streakMessage = "Your streak has been reset.";
+      }
+
+      this.streak = this.user.streak;
+      this.addLimit = 5 + this.user.streak;
+      this.user.lastLogin = today.toLocaleString();
+      this.updateUser();
+    },
+
+    async updateUser() {
+      try {
+        await fetch(`http://localhost:5001/users/${this.user.id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            streak: this.user.streak,
+            lastLogin: this.user.lastLogin,
+          }),
+        });
+      } catch (error) {
+        console.error("Error updating user streak:", error);
+      }
+    },
     // handle deatil view of expense (deatil model view)
     handleToggleDetailView(expense) {
       this.selectedExpense = expense;

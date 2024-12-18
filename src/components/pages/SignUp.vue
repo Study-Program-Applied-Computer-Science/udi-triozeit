@@ -55,6 +55,7 @@ export default {
         email: this.email,
         password: bcrypt.hashSync(this.password, 10),
         createdAt: new Date().toLocaleString(),
+        streak: 0,
       };
 
       let url = `${localHost}/users?email=${user.email}`;

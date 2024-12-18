@@ -8,22 +8,10 @@
       <div class="info-container">
         <form @submit.prevent="login" class="form-container">
           <label for="email"></label><br />
-          <input
-            v-model="email"
-            type="email"
-            id="email"
-            name="Email"
-            placeholder="Email"
-          /><br />
+          <input v-model="email" type="email" id="email" name="Email" placeholder="Email" /><br />
           <br />
           <label for="password"></label><br />
-          <input
-            v-model="password"
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-          /><br />
+          <input v-model="password" type="password" id="password" name="password" placeholder="Password" /><br />
           <br />
           <input type="submit" value="Login" />
         </form>
@@ -63,7 +51,22 @@ export default {
         console.log(passwordResult);
         if (passwordResult) {
           this.message = "User Successfuuly Loggedin";
-          this.$store.commit("login", currentUserDetails[0].email);
+          let user = {
+            ...currentUserDetails[0],
+            lastLogin: new Date().toLocaleString(),
+          };
+          await fetch(`${localHost}/users/${currentUserDetails[0].id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+          });
+          this.$store.commit("login", currentUserDetails[0].email, currentUserDetails[0].username, user.lastLogin);
+          //changes made 
+          // localStorage.setItem("username", currentUserDetails[0].username);
+          // this.$store.commit("login", currentUserDetails[0].email);
+          //
           this.$router.push("/expenses");
         } else {
           this.message = "Entered password is incorrect";

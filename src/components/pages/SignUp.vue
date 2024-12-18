@@ -8,31 +8,13 @@
       <div class="info-container">
         <form @submit.prevent="signup" class="form-container">
           <label for="uname"></label><br />
-          <input
-            v-model="username"
-            type="text"
-            id="uname"
-            name="UserName"
-            placeholder="Username"
-          /><br />
+          <input v-model="username" type="text" id="uname" name="UserName" placeholder="Username" /><br />
           <br />
           <label for="email"></label><br />
-          <input
-            v-model="email"
-            type="email"
-            id="email"
-            name="Email"
-            placeholder="Email"
-          /><br />
+          <input v-model="email" type="email" id="email" name="Email" placeholder="Email" /><br />
           <br />
           <label for="password"></label><br />
-          <input
-            v-model="password"
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-          /><br />
+          <input v-model="password" type="password" id="password" name="password" placeholder="Password" /><br />
           <br />
           <input type="submit" value="Sign Up" />
         </form>
@@ -72,6 +54,7 @@ export default {
         username: this.username,
         email: this.email,
         password: bcrypt.hashSync(this.password, 10),
+        createdAt: new Date().toLocaleString(),
       };
 
       let url = `${localHost}/users?email=${user.email}`;

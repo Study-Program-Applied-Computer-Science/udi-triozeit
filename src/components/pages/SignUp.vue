@@ -1,29 +1,35 @@
 <template>
   <div class="sign-up">
-    <h1>EXPENSE TRACKER</h1>
 
-    <div class="container">
-      <h1>Sign Up Form</h1>
+    <div class="left" style="height: 100vh; width: auto;">
+      <img src="../../assets/6-business-expense-tracker.jpg" alt=""
+        style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
 
-      <div class="info-container">
-        <form @submit.prevent="signup" class="form-container">
-          <label for="uname"></label><br />
-          <input v-model="username" type="text" id="uname" name="UserName" placeholder="Username" /><br />
-          <br />
-          <label for="email"></label><br />
-          <input v-model="email" type="email" id="email" name="Email" placeholder="Email" /><br />
-          <br />
-          <label for="password"></label><br />
-          <input v-model="password" type="password" id="password" name="password" placeholder="Password" /><br />
-          <br />
-          <input type="submit" value="Sign Up" />
-        </form>
+    <div class="right">
+      <div class="container">
+        <h1>Sign Up Form</h1>
+
+        <div class="info-container">
+          <form @submit.prevent="signup" class="form-container">
+            <label for="uname"></label><br />
+            <input v-model="username" type="text" id="uname" name="UserName" placeholder="Username" /><br />
+            <br />
+            <label for="email"></label><br />
+            <input v-model="email" type="email" id="email" name="Email" placeholder="Email" /><br />
+            <br />
+            <label for="password"></label><br />
+            <input v-model="password" type="password" id="password" name="password" placeholder="Password" /><br />
+            <br />
+            <input type="submit" value="Sign Up" />
+          </form>
+        </div>
+        <p v-if="message != ''">{{ message }}</p>
+        <h6>
+          Already a user?
+          <router-link to="/login">Click here to Login</router-link>
+        </h6>
       </div>
-      <p v-if="message != ''">{{ message }}</p>
-      <h6>
-        Already a user?
-        <router-link to="/login">Click here to Login</router-link>
-      </h6>
     </div>
   </div>
 </template>
@@ -103,14 +109,20 @@ export default {
 }
 
 .sign-up {
-  height: 100vh;
   width: 100%;
-  /* background-color: lightgreen; */
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
   align-items: center;
-  padding-top: 50px;
+  gap: 10px;
+}
+
+.left {
+  flex-grow: 1;
+}
+
+.right {
+  flex-grow: 1;
 }
 
 .sign-up h1 {
@@ -118,15 +130,23 @@ export default {
   font-weight: 100;
 }
 
+.left img {
+  width: 70%;
+}
+
+
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
+}
 
-  width: 30%;
-  height: 60%;
-  border: solid, 1px, black;
+.login-button {
+  height: 40px;
+  border-radius: 10px;
 }
 
 .info-container {
@@ -150,10 +170,9 @@ input[type="text"],
 input[type="password"],
 input[type="email"] {
   outline: 0;
-  border-width: 1px 1px 1px;
+  border-width: 0px 0px 2px;
   border-color: black;
   background: transparent;
-  padding: 10px;
 }
 
 input[type="submit"] {

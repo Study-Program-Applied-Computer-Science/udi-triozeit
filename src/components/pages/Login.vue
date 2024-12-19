@@ -1,24 +1,31 @@
 <template>
   <div class="sign-up">
-    <h1>EXPENSE TRACKER</h1>
 
-    <div class="container">
-      <h1>Login</h1>
-
-      <div class="info-container">
-        <form @submit.prevent="login" class="form-container">
-          <label for="email"></label><br />
-          <input v-model="email" type="email" id="email" name="Email" placeholder="Email" /><br />
-          <br />
-          <label for="password"></label><br />
-          <input v-model="password" type="password" id="password" name="password" placeholder="Password" /><br />
-          <br />
-          <input type="submit" value="Login" />
-        </form>
-      </div>
-      <p v-if="message != ''">{{ message }}</p>
+    <div class="left" style="height: 100vh; width: auto;">
+      <img src="../../assets/6-business-expense-tracker.jpg" alt=""
+        style="width: 100%; height: 100%; object-fit: cover;">
     </div>
+
+    <div class="right">
+      <div class="container">
+        <h1>Login</h1>
+        <div class="info-container">
+          <form @submit.prevent="login" class="form-container">
+            <label for="email"></label><br />
+            <input v-model="email" type="email" id="email" name="Email" placeholder="Email" /><br />
+            <br />
+            <label for="password"></label><br />
+            <input v-model="password" type="password" id="password" name="password" placeholder="Password" /><br />
+            <br />
+            <input type="submit" value="Login" class="login-button" />
+          </form>
+        </div>
+        <p v-if="message != ''">{{ message }}</p>
+      </div>
+    </div>
+
   </div>
+
 </template>
 
 <script>
@@ -35,7 +42,18 @@ export default {
   },
 
   methods: {
+    loaderInit() {
+      let loader = this.$loading.show({
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: true,
+      });
+
+      setTimeout(() => {
+        loader.hide()
+      }, 1000)
+    },
     async login() {
+
       console.log("Loggin Triggered");
       let url = `${localHost}/users?email=${this.email}`;
       const userDetail = await fetch(url);
@@ -50,6 +68,7 @@ export default {
         );
         console.log(passwordResult);
         if (passwordResult) {
+          await this.loaderInit();
           this.message = "User Successfuuly Loggedin";
           let user = {
             ...currentUserDetails[0],
@@ -62,9 +81,10 @@ export default {
             },
             body: JSON.stringify(user),
           });
+
           this.$store.commit("login", currentUserDetails[0].email, currentUserDetails[0].username, user.lastLogin);
           //changes made 
-           //localStorage.setItem("username", currentUserDetails[0].username);
+          //localStorage.setItem("username", currentUserDetails[0].username);
           // this.$store.commit("login", currentUserDetails[0].email);
           //
           this.$store.commit("setUsername", currentUserDetails[0].username);
@@ -88,14 +108,20 @@ export default {
 }
 
 .sign-up {
-  height: 100vh;
   width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
   align-items: center;
-  padding-top: 50px;
   gap: 10px;
+}
+
+.left {
+  flex-grow: 1;
+}
+
+.right {
+  flex-grow: 1;
 }
 
 .sign-up h1 {
@@ -103,14 +129,11 @@ export default {
   font-weight: 100;
 }
 
-.background-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  position: fixed;
-  top: 0;
+.left img {
+  width: 70%;
 }
+
+
 
 .container {
   display: flex;
@@ -118,9 +141,11 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  width: 30%;
-  height: 50%;
-  border: solid, 1px, black;
+}
+
+.login-button {
+  height: 40px;
+  border-radius: 10px;
 }
 
 .info-container {

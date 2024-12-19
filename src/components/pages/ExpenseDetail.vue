@@ -27,8 +27,7 @@
                     <div v-if="calculateSplit(expense) > 0" class="flex items-baseline">
                         <p class="text-red-500">Yet to split: € {{ calculateSplit(expense) }}</p>
                         <button @click="addSplit"
-                            class="bg-green-500 text-white px-4 py-2 rounded ml-2 hover:bg-green-600 transition duration-300">Add
-                            Split</button>
+                            class="text-green-500 ml-2 hover:text-green-600 transition duration-300">Add Split</button>
                     </div>
                 </div>
 
@@ -44,10 +43,13 @@
                         <input v-model="newSplit.notes" type="text" placeholder="Enter notes"
                             class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
                     </div>
-                    <button @click="saveSplit"
-                        class="bg-blue-500 text-white px-4 py-2 rounded mt-2 hover:bg-blue-600 transition duration-300">Save</button>
-                    <button @click="() => this.showSplitForm = !this.showSplitForm"
-                        class="bg-gray-500 text-white px-4 py-2 rounded mt-2 ml-2 hover:bg-gray-600 transition duration-300">Cancel</button>
+                    <div class="flex justify-end">
+                        <button @click="saveSplit"
+                            class="bg-blue-500 text-white px-4 py-2 rounded mt-2 hover:bg-blue-600 transition duration-300">Save</button>
+                        <button @click="closeSplit"
+                            class="bg-gray-500 text-white px-4 py-2 rounded mt-2 ml-2 hover:bg-gray-600 transition duration-300">Cancel</button>
+                    </div>
+
                 </div>
 
                 <div>
@@ -75,7 +77,7 @@
                 </div>
             </div>
             <button @click="closeModal"
-                class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600 transition duration-300">Close</button>
+                class="bg-blue-500 text-white px-4 py-2 rounded mt-4 w-full hover:bg-blue-600 transition duration-300">Close</button>
         </div>
     </div>
 </template>
@@ -122,7 +124,23 @@ export default {
             this.showSplitForm = true;
             this.editIndex = index;
         },
+        closeSplit() {
+            this.showSplitForm = false;
+            this.newSplit.amount = '';
+            this.newSplit.notes = '';
+            this.editIndex = undefined;
+        },
         saveSplit() {
+            if (isNaN(this.newSplit.amount) || this.newSplit.amount <= 0) {
+                alert("Please enter a valid number for the amount.");
+                return;
+            }
+
+            if (!this.newSplit.notes.trim()) {
+                alert("Notes cannot be empty or consist of only white spaces.");
+                return;
+            }
+
             if (this.newSplit.amount && this.newSplit.notes) {
                 console.log(this.newSplit.amount, this.calculateSplit(this.expense));
                 // validation is pending TO DO

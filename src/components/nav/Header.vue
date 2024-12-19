@@ -1,8 +1,14 @@
 <template>
   <header class="header">
-    <div class="header__logo">
-      <!-- <router-link to="/"><img :src="require('@/assets/image.png')"></router-link> -->
+
+    <div class="logo">
+      <router-link to="/expenses"><img src="../../assets/accounting.png" alt=""></router-link>
     </div>
+
+    <div class="title">
+      <h1>EXPENSE TRACKER</h1>
+    </div>
+
     <nav class="header__nav">
       <ul>
         <li>
@@ -44,35 +50,50 @@ export default {
 </script>
 
 <style scoped>
-/* Header Base Styling */
 .header {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
-  padding: 0 2rem;
+  padding: 02rem;
   height: 5rem;
-  background-color: #3cb043;
-  color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #006478;
+  color: #FFF8E1;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 /* Logo Styling */
-.header__logo {
+/* .header__logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+} */
+
+.logo {
+  width: 30%;
 }
 
-.header__logo img {
+.title {
+  width: 50%;
+}
+
+.header__nav {}
+
+.logo img {
   height: 40px;
   width: 40px;
-  border-radius: 50%;
 }
 
-.header__logo a {
+.title h1 {
+  font-family: cursive;
+  font-size: 50px;
+  margin-left: 30px;
+}
+
+
+
+/* .header__logo a {
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
@@ -82,12 +103,12 @@ export default {
 
 .header__logo a:hover {
   color: #f0d5ff;
-}
+} */
 
-/* Navigation Styling */
+/* Navigation Styling
 .header__nav {
-  margin-left: auto;
-}
+
+} */
 
 .header__nav ul {
   list-style: none;
@@ -117,15 +138,7 @@ export default {
   border-color: #f0d5ff;
 }
 
-/* Cart Badge */
-.cart {
-  display: flex;
-  align-items: center;
-}
 
-.cart base-badge {
-  margin-left: 0.5rem;
-}
 
 /* Actions (Login/Logout and Admin Button) */
 .header__actions {
@@ -150,22 +163,9 @@ button:hover {
   color: #45006d;
 }
 
-.admin-link {
-  text-decoration: none;
-  font-weight: bold;
-  color: #ffc107;
-  /* Gold Color for Admin */
-  padding: 0.5rem 1rem;
-  border: 1px solid #ffc107;
-  border-radius: 20px;
-  background-color: transparent;
-  transition: background-color 0.3s, color 0.3s;
-}
 
-.admin-link:hover {
-  background-color: #ffc107;
-  color: #45006d;
-}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

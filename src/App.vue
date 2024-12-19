@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col">
+  <div class="layout">
     <Header />
-    <div>
+    <div class="main-container">
       <router-view />
     </div>
     <Footer />
@@ -39,5 +39,16 @@ body {
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-container {
+  width: 100%;
+  height: 80vh;
 }
 </style>

@@ -8,34 +8,52 @@
 
         <div class="w-full flex flex-col gap-4 justify-around">
           <div class="flex items-center gap-4">
-            <label for="searchExpense" class="block text-sm font-medium text-gray-700">Search Expense</label>
-            <input type="text" id="searchExpense" v-model="searchExpense" placeholder="Enter the title"
-              class="ml-1.5  w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <div class="flex items-center space-x-2">
+              <label for="searchExpense" class="text-sm font-medium text-gray-700 min-w-[100px] text-right">
+                Search Expense
+              </label>
+              <input type="text" id="searchExpense" v-model="searchExpense" placeholder="Enter the title"
+                class="w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            </div>
 
-            <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
-            <input type="Date" id="startDate" v-model="startDate"
-              class="ml-1.5 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <div class="flex items-center space-x-2">
+              <label for="startDate" class="text-sm font-medium text-gray-700 min-w-[100px] text-right">
+                Start Date
+              </label>
+              <input type="date" id="startDate" v-model="startDate"
+                class="w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            </div>
 
-            <label for="endDate" class="block text-sm font-medium text-gray-700">End Date</label>
-            <input type="Date" id="endDate" v-model="endDate"
-              class="ml-1.5 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <div class="flex items-center space-x-2">
+              <label for="endDate" class="text-sm font-medium text-gray-700 min-w-[100px] text-right">
+                End Date
+              </label>
+              <input type="date" id="endDate" v-model="endDate"
+                class="w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            </div>
 
-            <label for="selectedCategory" class="block text-sm font-medium text-gray-700">Select Category</label>
-            <select id="selectedCategory" v-model="selectedCategory"
-              class="ml-1.5 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500">
-              <option value="">All Catgories</option>
-              <option value="Food">Food</option>
-              <option value="Transport">Transport</option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Utilities">Utilities</option>
-              <option value="Other">Other</option>
-            </select>
+            <div class="flex items-center space-x-2">
+              <label for="selectedCategory" class="text-sm font-medium text-gray-700 min-w-[100px] text-right">
+                Select Category
+              </label>
+              <select id="selectedCategory" v-model="selectedCategory"
+                class="w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                <option value="">All Catgories</option>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
             <button @click="openModal()"
               class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-md shadow transition duration-300 whitespace-nowrap"
               style="height: 40px;">
               Add Expense
             </button>
           </div>
+
           <div v-for="expense in searchAndFilter" :key="expense.id" @dblclick="handleToggleDetailView(expense)"
             class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border-2 border-gray-200 shadow-md">
             <div class="flex items-center gap-4 w-full cursor-pointer" @click="handleToggleDetailView(expense)">
@@ -171,18 +189,18 @@ export default {
       if (this.startDate || this.endDate) {
         if (this.startDate && this.endDate) {
           filterData = filterData.filter((expense) => {
-            return expense.day >= this.startDate && expense.day <= this.endDate;
+            return expense.dateTime >= this.startDate && expense.dateTime <= this.endDate;
           })
         }
 
         else if (this.startDate) {
           filterData = filterData.filter((expense) => {
-            return expense.day >= this.startDate;
+            return expense.dateTime >= this.startDate;
           })
         }
         else {
           filterData = filterData.filter((expense) => {
-            return expense.day <= this.endDate;
+            return expense.dateTime <= this.endDate;
           })
 
         }

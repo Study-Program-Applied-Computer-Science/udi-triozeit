@@ -1,6 +1,9 @@
 <template>
   <div class="max-w-7xl mx-auto mt-12 my-auto p-6 min-h-fit">
     <div class="bg-white p-8 rounded-lg shadow-md">
+      <button @click="$router.go(-1)"
+        class="text-blue-500 font-bold py-2 px-4 rounded-md transition duration-300 flex items-center gap-2">
+        <i class="fas fa-arrow-left"></i> Back </button>
       <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">
         {{ username }}'s Expenses
       </h2>
@@ -88,7 +91,7 @@
               </div>
             </div>
 
-            <div class="ml-4 w-1/4">
+            <div class="ml-4 w-1/4 self-start">
               <div @click="showStreakInfo = !showStreakInfo"
                 class="bg-white p-6 rounded-lg shadow-md border-2 border-gray-200 cursor-pointer transition-transform transform hover:scale-105 min-h-[200px]">
                 <div v-if="showStreakInfo" class="min-h-64">
@@ -352,7 +355,7 @@ export default {
         this.errorMessage = "Expense Title cannot be empty!";
         return;
       }
-      this.newExpense = { ...this.newExpense, split: [] };
+      this.newExpense = { ...this.newExpense, split: [], createdAt: new Date().toISOString().slice(0, 10) };
       if (this.editingId) {
         await this.$store.dispatch("updateExpense", { ...this.newExpense, id: this.editingId });
       } else {

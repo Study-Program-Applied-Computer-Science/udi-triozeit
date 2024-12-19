@@ -1,5 +1,9 @@
 <template>
   <div class="max-w-5xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-lg">
+    <button @click="$router.go(-1)"
+      class="text-blue-500 font-bold py-2 px-4 rounded-md transition duration-300 flex items-center gap-2">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
     <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Expense Report</h2>
 
 

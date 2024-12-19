@@ -49,10 +49,16 @@
               </select>
             </div>
 
-            <button @click="openModal()" :disabled="addButtonLimit === 0"
-              :class="{ 'bg-green-500 hover:bg-green-600': addButtonLimit !== 0, 'bg-gray-500 cursor-not-allowed': addButtonLimit === 0 }"
+            <button 
+              @click="openModal()" 
+              :disabled="addButtonLimit === 0"
+              :class="{
+                'bg-black hover:bg-gray-800': addButtonLimit !== 0,
+                'bg-gray-500 cursor-not-allowed': addButtonLimit === 0
+              }"
               class="text-white font-bold py-2 px-6 rounded-md shadow transition duration-300 whitespace-nowrap"
-              style="height: 40px;">
+              style="height: 40px;"
+            >
               Add Expense
             </button>
           </div>

@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .footer {
-    background-color: #006478;
+    background-color: #0c0c0c;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

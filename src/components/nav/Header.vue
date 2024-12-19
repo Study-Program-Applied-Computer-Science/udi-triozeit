@@ -67,7 +67,7 @@ export default {
   align-items: center;
   padding: 02rem;
   height: 5rem;
-  background-color: #006478;
+  background-color: #0a0a0a;
   color: #FFF8E1;
   position: sticky;
   top: 0;

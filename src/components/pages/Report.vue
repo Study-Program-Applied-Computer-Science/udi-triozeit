@@ -38,7 +38,7 @@
 
     <div class="flex justify-center mt-6">
       <button @click="downloadFile"
-        class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-lg rounded-lg shadow-md transition duration-300">
+        class="bg-black  hover:bg-green-600 text-white font-bold py-3 px-8 text-lg rounded-lg shadow-md transition duration-300">
         Download the Report
       </button>
     </div>

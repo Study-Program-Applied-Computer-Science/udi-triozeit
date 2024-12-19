@@ -4,15 +4,19 @@
     <div>
       <router-view />
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from './components/nav/Header.vue';
+import Footer from './components/nav/Footer.vue';
+
 
 export default {
   components: {
     Header,
+    Footer,
   },
 }
 </script>

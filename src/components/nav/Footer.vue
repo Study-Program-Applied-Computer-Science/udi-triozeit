@@ -1,27 +1,18 @@
 <template>
-
-    <section class="social-media">
-        <div class="follow-us">
-            <h1>Follow us</h1>
-            <dic class="icons">
-                <ul>
-                    <li>
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-x-twitter"></i>
-                    </li>
-                    <li><i class="fa-brands fa-youtube"></i></li>
-                    <li>
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-instagram"></i>
-                    </li>
-                </ul>
-            </dic>
+    <footer class="footer">
+        <div class="info">
+            <p>Carefully Cooked by <a href="#">Triozeit</a><sup>TM</sup></p>
         </div>
-    </section>
+
+        <div class="conditions">
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+
+        <div class="address">
+            <p>SRH Hochschule Heidelberg , Germany<sup>TM</sup></p>
+        </div>
+    </footer>
 </template>
 
 <script>
@@ -32,29 +23,33 @@ export default {
 </script>
 
 <style scoped>
-.social-media {
-    background: linear-gradient(90deg, #b0e57c, #56ab2f, #2e8b57, #006400);
-    padding-top: 10px;
-}
-
-
-.follow-us h1 {
-    text-align: center;
-    margin: 10px;
-    text-decoration: solid;
-    font-weight: 700;
-}
-
-.icons ul {
+.footer {
+    background-color: #006478;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    padding: 40px;
+    color: white;
+
+    /* position: sticky; */
+    color: white;
+    font-weight: bold;
 }
 
-.icons ul li {
-    list-style: none;
-    font-size: 30px;
-    padding: 25px;
+.conditions {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+
+}
+
+.footer a {
+    text-decoration: underline;
+}
+
+sup {
+    font-size: x-small;
 }
 </style>

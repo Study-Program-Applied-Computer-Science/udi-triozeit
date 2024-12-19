@@ -42,7 +42,18 @@ export default {
     },
   },
   methods: {
-    logout() {
+    loaderInit() {
+      let loader = this.$loading.show({
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: true,
+      });
+
+      setTimeout(() => {
+        loader.hide()
+      }, 1000)
+    },
+    async logout() {
+      await this.loaderInit();
       this.$store.commit("logout");
     },
   },

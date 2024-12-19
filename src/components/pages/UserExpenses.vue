@@ -355,7 +355,7 @@ export default {
         this.errorMessage = "Expense Title cannot be empty!";
         return;
       }
-      this.newExpense = { ...this.newExpense, split: [], createdAt: new Date().toISOString().slice(0, 10) };
+      this.newExpense = { ...this.newExpense, split: [], createdAt: new Date().toISOString().slice(0, 10),createdDateTime: new Date().toISOString() };
       if (this.editingId) {
         await this.$store.dispatch("updateExpense", { ...this.newExpense, id: this.editingId });
       } else {
@@ -373,7 +373,7 @@ export default {
       this.editingId = null;
     },
     formatDateTime(dateTime) {
-      return new Date(dateTime).toLocaleString();
+      return new Date(dateTime).toLocaleDateString();
     },
     editExpense(expense) {
       this.openModal(expense);

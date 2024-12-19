@@ -2,7 +2,7 @@
   <header class="header">
 
     <div class="logo">
-      <router-link to="/expenses"><img src="../../assets/accounting.png" alt=""></router-link>
+      <router-link to="/"><img src="../../assets/accounting.png" alt=""></router-link>
     </div>
 
     <div class="title">
@@ -76,6 +76,7 @@ export default {
 
 .title {
   width: 50%;
+  cursor: pointer;
 }
 
 .header__nav {}

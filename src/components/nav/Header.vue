@@ -119,6 +119,8 @@ export default {
   gap: 1.5rem;
 }
 
+
+
 .header__nav li {
   margin: 0;
 }

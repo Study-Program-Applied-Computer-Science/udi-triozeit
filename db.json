@@ -30,13 +30,15 @@
       "username": "test24545",
       "email": "newtest@gmail.com",
       "password": "$2a$10$n9nE09oDTSkM5tAs.tczsu4SHlpdsSk6t4IbfT/10AeaOZPddmdwq",
-      "id": 5
+      "id": 5,
+      "lastLogin": "12/19/2024, 3:06:21 AM"
     },
     {
       "username": "yathish",
       "email": "yathish@gmail.com",
       "password": "$2a$10$7olotOlIe57fh3RP1GvZTeHWPhWTe551Z8v6pRLqRqhuqYbPHYq6q",
-      "id": 6
+      "id": 6,
+      "lastLogin": "12/19/2024, 3:24:28 AM"
     },
     {
       "username": "MAnu",
@@ -45,7 +47,7 @@
       "id": 7,
       "streak": 2,
       "addLimit": 7,
-      "lastLogin": "12/18/2024, 5:08:06 PM"
+      "lastLogin": "12/19/2024, 1:45:00 PM"
     }
   ],
   "expenses": [
@@ -130,7 +132,7 @@
     },
     {
       "title": "paris",
-      "amount": 500,
+      "amount": 50000,
       "category": "Entertainment",
       "dateTime": "2024-12-16T05:55",
       "email": "yathish@gmail.com",
@@ -159,14 +161,6 @@
       "dateTime": "2024-12-15T01:21",
       "email": "yathish@gmail.com",
       "id": 22
-    },
-    {
-      "title": "xz",
-      "amount": 1,
-      "category": "Transport",
-      "dateTime": "2024-12-16T01:30",
-      "email": "yathish@gmail.com",
-      "id": 23
     },
     {
       "title": "ghghgh",
@@ -227,26 +221,6 @@
       "id": 27
     },
     {
-      "title": "Test new",
-      "amount": 300,
-      "category": "Entertainment",
-      "dateTime": "2024-12-17T00:38",
-      "split": [
-        {
-          "amount": 45,
-          "notes": "test",
-          "id": 1734482987100
-        },
-        {
-          "amount": 155,
-          "notes": "test 160",
-          "id": 1734483006926
-        }
-      ],
-      "email": "testlogin@gmail.com",
-      "id": 28
-    },
-    {
       "title": "test update her",
       "amount": 500,
       "category": "Food",
@@ -265,22 +239,42 @@
       "id": 30
     },
     {
-      "title": "$",
-      "amount": 5,
+      "title": "addd",
+      "amount": 1000,
       "category": "Transport",
-      "dateTime": "2024-12-17T19:39",
-      "split": [],
-      "email": "testlogin@gmail.com",
-      "id": 31
+      "dateTime": "2024-12-19T00:38",
+      "email": {
+        "email": "yathish@gmail.com",
+        "username": "yathish",
+        "lastLogin": "12/19/2024, 1:38:06 AM"
+      },
+      "id": 32
     },
     {
-      "title": "ALDI",
-      "amount": 95,
-      "category": "Other",
-      "dateTime": "2024-12-18T15:45",
+      "title": "dubai",
+      "amount": 100,
+      "category": "Transport",
+      "dateTime": "2024-12-19T02:25",
+      "email": "yathish@gmail.com",
+      "id": 33
+    },
+    {
+      "title": "Netto test",
+      "amount": 5,
+      "category": "Transport",
+      "dateTime": "2024-12-19T12:58",
+      "email": "testlogin@gmail.com",
+      "id": 34,
+      "split": []
+    },
+    {
+      "title": "test hello",
+      "amount": 8000,
+      "category": "Utilities",
+      "dateTime": "2024-12-19T13:04",
       "split": [],
       "email": "testlogin@gmail.com",
-      "id": 32
+      "id": 36
     }
   ]
 }

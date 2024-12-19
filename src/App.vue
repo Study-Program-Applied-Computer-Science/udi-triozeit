@@ -18,6 +18,9 @@ export default {
     Header,
     Footer,
   },
+  created() {
+    this.$store.dispatch("initializeUser");
+  },
 }
 </script>
 

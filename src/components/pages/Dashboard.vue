@@ -9,7 +9,11 @@
 <script>
 export default {
     name: "DashboardComponent",
+    created() {
+        this.$store.dispatch("initializeUser");
+    },
 }
+
 </script>
 <style scoped>
 .container {

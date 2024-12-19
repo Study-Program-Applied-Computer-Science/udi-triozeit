@@ -4,14 +4,13 @@
       class="text-blue-500 font-bold py-2 px-4 rounded-md transition duration-300 flex items-center gap-2">
       <i class="fas fa-arrow-left"></i> Back
     </button>
-    <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Expense Report</h2>
 
+    <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Expense Report</h2>
 
     <div class="bg-green-100 p-6 rounded-lg shadow-lg mb-6">
       <h3 class="text-2xl font-bold text-green-700">Total Expenses</h3>
       <p class="text-4xl font-semibold text-gray-800 mt-2">€{{ totalExpenses }}</p>
     </div>
-
 
     <div class="bg-blue-100 p-6 rounded-lg shadow-lg mb-6">
       <h3 class="text-2xl font-bold text-blue-700">Category Breakdown</h3>
@@ -38,7 +37,7 @@
 
     <div class="flex justify-center mt-6">
       <button @click="downloadFile"
-        class="bg-black  hover:bg-green-600 text-white font-bold py-3 px-8 text-lg rounded-lg shadow-md transition duration-300">
+        class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 text-lg rounded-lg shadow-md transition duration-300">
         Download the Report
       </button>
     </div>

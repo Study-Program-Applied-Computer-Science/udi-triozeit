@@ -38,7 +38,7 @@
       "email": "yathish@gmail.com",
       "password": "$2a$10$7olotOlIe57fh3RP1GvZTeHWPhWTe551Z8v6pRLqRqhuqYbPHYq6q",
       "id": 6,
-      "lastLogin": "12/19/2024, 11:26:42 PM"
+      "lastLogin": "12/20/2024, 12:13:08 AM"
     },
     {
       "username": "MAnu",
@@ -145,14 +145,6 @@
       "dateTime": "2024-12-16T05:51",
       "email": "yathish@gmail.com",
       "id": 20
-    },
-    {
-      "title": "new",
-      "amount": 10,
-      "category": "Utilities",
-      "dateTime": "2024-12-12T08:53",
-      "email": "yathish@gmail.com",
-      "id": 21
     },
     {
       "title": "old expense",
@@ -310,9 +302,20 @@
       "dateTime": "2024-12-19T22:05",
       "split": [],
       "createdAt": "2024-12-19",
-      "createdDateTime": "2024-12-19T22:05:29.454Z",
+      "createdDateTime": "2024-12-19T23:27:40.183Z",
       "email": "yathish@gmail.com",
       "id": 43
+    },
+    {
+      "title": "latest",
+      "amount": 100,
+      "category": "Food",
+      "dateTime": "2024-12-19T23:13",
+      "split": [],
+      "createdAt": "2024-12-19",
+      "createdDateTime": "2024-12-19T23:13:26.291Z",
+      "email": "yathish@gmail.com",
+      "id": 44
     }
   ]
 }

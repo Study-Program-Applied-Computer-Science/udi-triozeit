@@ -280,7 +280,7 @@ export default {
     calculateAddLimit(value) {
       const today = new Date().toISOString().slice(0, 10);
       const todayExpenses = this.$store.getters.filteredExpenses.filter(expense =>
-        expense.dateTime.slice(0, 10) === today
+        expense.createdAt === today
       );
       const remainingLimit = value - todayExpenses.length;
       if (remainingLimit <= 0) {
@@ -355,7 +355,7 @@ export default {
         this.errorMessage = "Expense Title cannot be empty!";
         return;
       }
-      this.newExpense = { ...this.newExpense, split: [], createdAt: new Date().toISOString().slice(0, 10),createdDateTime: new Date().toISOString() };
+      this.newExpense = { ...this.newExpense, split: [], createdAt: new Date().toISOString().slice(0, 10), createdDateTime: new Date().toISOString() };
       if (this.editingId) {
         await this.$store.dispatch("updateExpense", { ...this.newExpense, id: this.editingId });
       } else {

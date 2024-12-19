@@ -10,7 +10,7 @@
         </div>
 
         <div class="address">
-            <p>SRH Hochschule Heidelberg , Germany<sup>TM</sup></p>
+            <p>SRH Hochschule Heidelberg , Germany</p>
         </div>
     </footer>
 </template>

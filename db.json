@@ -28,14 +28,15 @@
       "username": "test24545",
       "email": "newtest@gmail.com",
       "password": "$2a$10$n9nE09oDTSkM5tAs.tczsu4SHlpdsSk6t4IbfT/10AeaOZPddmdwq",
-      "id": 5
+      "id": 5,
+      "lastLogin": "12/19/2024, 3:06:21 AM"
     },
     {
       "username": "yathish",
       "email": "yathish@gmail.com",
       "password": "$2a$10$7olotOlIe57fh3RP1GvZTeHWPhWTe551Z8v6pRLqRqhuqYbPHYq6q",
       "id": 6,
-      "lastLogin": "12/18/2024, 6:06:54 PM"
+      "lastLogin": "12/19/2024, 3:24:28 AM"
     },
     {
       "username": "MAnu",
@@ -129,7 +130,7 @@
     },
     {
       "title": "paris",
-      "amount": 500,
+      "amount": 50000,
       "category": "Entertainment",
       "dateTime": "2024-12-16T05:55",
       "email": "yathish@gmail.com",
@@ -158,14 +159,6 @@
       "dateTime": "2024-12-15T01:21",
       "email": "yathish@gmail.com",
       "id": 22
-    },
-    {
-      "title": "xz",
-      "amount": 1,
-      "category": "Transport",
-      "dateTime": "2024-12-16T01:30",
-      "email": "yathish@gmail.com",
-      "id": 23
     },
     {
       "title": "ghghgh",
@@ -271,6 +264,26 @@
       "split": [],
       "email": "testlogin@gmail.com",
       "id": 31
+    },
+    {
+      "title": "addd",
+      "amount": 1000,
+      "category": "Transport",
+      "dateTime": "2024-12-19T00:38",
+      "email": {
+        "email": "yathish@gmail.com",
+        "username": "yathish",
+        "lastLogin": "12/19/2024, 1:38:06 AM"
+      },
+      "id": 32
+    },
+    {
+      "title": "dubai",
+      "amount": 100,
+      "category": "Transport",
+      "dateTime": "2024-12-19T02:25",
+      "email": "yathish@gmail.com",
+      "id": 33
     }
   ]
 }

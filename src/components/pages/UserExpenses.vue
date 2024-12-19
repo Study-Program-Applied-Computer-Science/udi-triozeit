@@ -189,7 +189,6 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("initializeUser");
     this.$store.dispatch("fetchExpenses");
     this.fetchUserData();
   },

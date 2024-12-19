@@ -64,9 +64,10 @@ export default {
           });
           this.$store.commit("login", currentUserDetails[0].email, currentUserDetails[0].username, user.lastLogin);
           //changes made 
-          // localStorage.setItem("username", currentUserDetails[0].username);
+           //localStorage.setItem("username", currentUserDetails[0].username);
           // this.$store.commit("login", currentUserDetails[0].email);
           //
+          this.$store.commit("setUsername", currentUserDetails[0].username);
           this.$router.push("/expenses");
         } else {
           this.message = "Entered password is incorrect";

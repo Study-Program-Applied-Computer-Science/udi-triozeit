@@ -4,13 +4,15 @@
       "username": "test1",
       "email": "test1@gmail.com",
       "password": "$2a$10$HDSNm8ZxEhihDjlUcB73Q.mRJPPyCRsOkM6dHGbq9upOiMrthP/um",
-      "id": 1
+      "id": 1,
+      "lastLogin": "12/18/2024, 3:41:25 AM"
     },
     {
       "username": "test3",
       "email": "test3@gmail.com",
       "password": "$2a$10$rmtC97N8JJy6V2cC2TaBWeb22zLgFiHG0VUg5MwmZFzuU.uB9ZlQe",
-      "id": 2
+      "id": 2,
+      "lastLogin": "12/18/2024, 3:45:12 AM"
     },
     {
       "username": "test2",
@@ -43,7 +45,7 @@
       "id": 7,
       "streak": 2,
       "addLimit": 7,
-      "lastLogin": "12/18/2024, 1:46:21 AM"
+      "lastLogin": "12/18/2024, 6:14:03 PM"
     }
   ],
   "expenses": [
@@ -270,6 +272,15 @@
       "split": [],
       "email": "testlogin@gmail.com",
       "id": 31
+    },
+    {
+      "title": "ALDI",
+      "amount": 95,
+      "category": "Other",
+      "dateTime": "2024-12-18T15:45",
+      "split": [],
+      "email": "testlogin@gmail.com",
+      "id": 32
     }
   ]
 }

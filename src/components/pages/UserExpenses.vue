@@ -7,9 +7,31 @@
       <div class="flex gap-8">
 
         <div class="w-2/3 flex flex-col gap-4 justify-around">
-          <!-- search input  -->
-          <input type="text" v-model="searchExpense" placeholder="Enter amount"
+          <label for="searchExpense" class="block text-sm font-medium text-gray-700">Search Expense</label>
+          <input type="text" id="searchExpense" v-model="searchExpense" placeholder="Enter the title"
             class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+
+          <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
+          <input type="Date" id="startDate" v-model="startDate"
+            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+
+          <label for="endDate" class="block text-sm font-medium text-gray-700">End Date</label>
+          <input type="Date" id="endDate" v-model="endDate"
+            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+
+          <label for="selectedCategory" class="block text-sm font-medium text-gray-700">Select Category</label>
+          <select id="selectedCategory" v-model="selectedCategory"
+            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            <option value="">All Catgories</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Other">Other</option>
+          </select>
+
+
+
           <div v-for="expense in searchAndFilter" :key="expense.id" @dblclick="handleToggleDetailView(expense)"
             class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border-2 border-gray-200 shadow-md">
             <div class="flex items-center gap-4 w-full" @dblclick="handleToggleDetailView(expense)">

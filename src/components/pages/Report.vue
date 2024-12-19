@@ -27,7 +27,7 @@ export default {
                 return [item.title, item.dateTime, item.category, item.amount];
             }
             )
-            doc.text("REPORT", 100, 10)
+            doc.text("EXPENSE REPORT", 90, 10)
             doc.line(0, 12, 400, 11)
 
 
@@ -36,12 +36,9 @@ export default {
                 body: content
             })
             doc.text(`The total amount :${totalAmount}`, 150, (doc.lastAutoTable.finalY + 10))
-
-
             doc.save('ExpenseReport')
         },
     },
-
 }
 </script>
 <style scoped>

@@ -47,7 +47,7 @@
       "id": 7,
       "streak": 2,
       "addLimit": 7,
-      "lastLogin": "12/19/2024, 1:45:00 PM"
+      "lastLogin": "12/19/2024, 8:10:56 PM"
     }
   ],
   "expenses": [
@@ -259,22 +259,49 @@
       "id": 33
     },
     {
-      "title": "Netto test",
-      "amount": 5,
-      "category": "Transport",
-      "dateTime": "2024-12-19T12:58",
+      "title": "Previous Day Expense 1",
+      "amount": 150,
+      "category": "Food",
+      "dateTime": "2024-12-18T10:00",
       "email": "testlogin@gmail.com",
-      "id": 34,
+      "id": 35,
       "split": []
     },
     {
-      "title": "test hello",
-      "amount": 8000,
-      "category": "Utilities",
-      "dateTime": "2024-12-19T13:04",
+      "title": "Previous Day Expense 2",
+      "amount": 200,
+      "category": "Transport",
+      "dateTime": "2024-12-18T14:30",
+      "email": "testlogin@gmail.com",
+      "id": 37,
+      "split": []
+    },
+    {
+      "title": "3424",
+      "amount": 23,
+      "category": "Transport",
+      "dateTime": "2024-12-19T19:18",
       "split": [],
       "email": "testlogin@gmail.com",
-      "id": 36
+      "id": 40
+    },
+    {
+      "title": "dfgdfgdgf",
+      "amount": 34,
+      "category": "Utilities",
+      "dateTime": "2024-12-19T19:20",
+      "split": [],
+      "email": "testlogin@gmail.com",
+      "id": 41
+    },
+    {
+      "title": "6776",
+      "amount": 34423,
+      "category": "Utilities",
+      "dateTime": "2024-12-19T19:20",
+      "split": [],
+      "email": "testlogin@gmail.com",
+      "id": 42
     }
   ]
 }

@@ -102,6 +102,10 @@ const store = createStore({
       }
     },
 
+    async updateUser(user, updatedUser) {
+      await util.updateUser(user, updatedUser);
+    },
+
     async updateSplitExpenses(state, updatedSplitValue) {
       await util.updateSplitExpenses(updatedSplitValue);
     },

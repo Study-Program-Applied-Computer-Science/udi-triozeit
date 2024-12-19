@@ -4,37 +4,41 @@
       <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">
         {{ username }}'s Expenses
       </h2>
-      <div class="flex gap-8">
+      <div class="flex">
 
-        <div class="w-2/3 flex flex-col gap-4 justify-around">
-          <label for="searchExpense" class="block text-sm font-medium text-gray-700">Search Expense</label>
-          <input type="text" id="searchExpense" v-model="searchExpense" placeholder="Enter the title"
-            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+        <div class="w-full flex flex-col gap-4 justify-around">
+          <div class="flex items-center gap-4">
+            <label for="searchExpense" class="block text-sm font-medium text-gray-700">Search Expense</label>
+            <input type="text" id="searchExpense" v-model="searchExpense" placeholder="Enter the title"
+              class="ml-1.5  w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
 
-          <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
-          <input type="Date" id="startDate" v-model="startDate"
-            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
+            <input type="Date" id="startDate" v-model="startDate"
+              class="ml-1.5 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
 
-          <label for="endDate" class="block text-sm font-medium text-gray-700">End Date</label>
-          <input type="Date" id="endDate" v-model="endDate"
-            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+            <label for="endDate" class="block text-sm font-medium text-gray-700">End Date</label>
+            <input type="Date" id="endDate" v-model="endDate"
+              class="ml-1.5 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
 
-          <label for="selectedCategory" class="block text-sm font-medium text-gray-700">Select Category</label>
-          <select id="selectedCategory" v-model="selectedCategory"
-            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500">
-            <option value="">All Catgories</option>
-            <option value="Food">Food</option>
-            <option value="Transport">Transport</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Utilities">Utilities</option>
-            <option value="Other">Other</option>
-          </select>
-
-
-
+            <label for="selectedCategory" class="block text-sm font-medium text-gray-700">Select Category</label>
+            <select id="selectedCategory" v-model="selectedCategory"
+              class="ml-1.5 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500">
+              <option value="">All Catgories</option>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Utilities">Utilities</option>
+              <option value="Other">Other</option>
+            </select>
+            <button @click="openModal()"
+              class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-md shadow transition duration-300 whitespace-nowrap"
+              style="height: 40px;">
+              Add Expense
+            </button>
+          </div>
           <div v-for="expense in searchAndFilter" :key="expense.id" @dblclick="handleToggleDetailView(expense)"
             class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border-2 border-gray-200 shadow-md">
-            <div class="flex items-center gap-4 w-full" @dblclick="handleToggleDetailView(expense)">
+            <div class="flex items-center gap-4 w-full cursor-pointer" @click="handleToggleDetailView(expense)">
               <span class="font-bold text-lg flex-shrink-0 w-1/4">{{ expense.title }}</span>
               <span
                 class="bg-green-500 text-white rounded-full px-4 py-1 text-sm font-semibold flex-shrink-0 w-1/5 text-center">
@@ -148,11 +152,51 @@ export default {
   components: { ExpenseDetail },
   computed: {
     searchAndFilter() {
-      let filterData = this.$store.getters.filteredExpenses || [];
+      let filterData = this.$store.getters.filteredExpenses;
       if (this.searchExpense) {
-        filterData = filterData.filter((expense) =>
-          expense.title.toLowerCase().includes(this.searchExpense.toLowerCase())
-        );
+        filterData = filterData.filter((expense) => {
+          return expense.title
+            .toLowerCase()
+            .includes(this.searchExpense?.toLowerCase());
+        });
+      }
+
+      if (this.selectedCategory) {
+        console.log("Category Filter");
+        filterData = filterData.filter((expense) => {
+          return expense.category === this.selectedCategory;
+        })
+      }
+
+      if (this.startDate || this.endDate) {
+        if (this.startDate && this.endDate) {
+          filterData = filterData.filter((expense) => {
+            return expense.day >= this.startDate && expense.day <= this.endDate;
+          })
+        }
+
+        else if (this.startDate) {
+          filterData = filterData.filter((expense) => {
+            return expense.day >= this.startDate;
+          })
+        }
+        else {
+          filterData = filterData.filter((expense) => {
+            return expense.day <= this.endDate;
+          })
+
+        }
+      }
+
+      if (this.sortOrder) {
+        filterData.sort((a, b) => {
+          if (this.sortOrder === "asc") {
+            return a.amount - b.amount
+          }
+          else {
+            return b.amount - a.amount
+          }
+        })
       }
       return filterData;
     },
@@ -218,6 +262,7 @@ export default {
         this.errorMessage = "Expense Title cannot be empty!";
         return;
       }
+      this.newExpense = { ...this.newExpense, split: [] };
       if (this.editingId) {
         await this.$store.dispatch("updateExpense", { ...this.newExpense, id: this.editingId });
       } else {

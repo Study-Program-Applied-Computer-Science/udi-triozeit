@@ -15,6 +15,11 @@ export const updateSplitExpenses = async (updatedSplitValue) => {
   return data;
 };
 
+export const fetchUsers = async () => {
+  const response = await fetch(`${localHost}/users`);
+  return response.json();
+}
+
 export const fetchExpenses = async (currentUser) => {
   const response = await fetch(`${localHost}/expenses`);
   const data = await response.json();
@@ -51,5 +56,5 @@ export const deleteExpense = async (id) => {
     method: "DELETE",
   });
 
-  return response.ok; 
+  return response.ok;
 };

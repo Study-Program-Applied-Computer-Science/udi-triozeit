@@ -47,7 +47,7 @@
       "id": 7,
       "streak": 2,
       "addLimit": 7,
-      "lastLogin": "12/18/2024, 5:08:06 PM"
+      "lastLogin": "12/19/2024, 1:45:00 PM"
     }
   ],
   "expenses": [
@@ -221,26 +221,6 @@
       "id": 27
     },
     {
-      "title": "Test new",
-      "amount": 300,
-      "category": "Entertainment",
-      "dateTime": "2024-12-17T00:38",
-      "split": [
-        {
-          "amount": 45,
-          "notes": "test",
-          "id": 1734482987100
-        },
-        {
-          "amount": 155,
-          "notes": "test 160",
-          "id": 1734483006926
-        }
-      ],
-      "email": "testlogin@gmail.com",
-      "id": 28
-    },
-    {
       "title": "test update her",
       "amount": 500,
       "category": "Food",
@@ -257,15 +237,6 @@
       "split": [],
       "email": null,
       "id": 30
-    },
-    {
-      "title": "$",
-      "amount": 5,
-      "category": "Transport",
-      "dateTime": "2024-12-17T19:39",
-      "split": [],
-      "email": "testlogin@gmail.com",
-      "id": 31
     },
     {
       "title": "addd",
@@ -286,6 +257,24 @@
       "dateTime": "2024-12-19T02:25",
       "email": "yathish@gmail.com",
       "id": 33
+    },
+    {
+      "title": "Netto test",
+      "amount": 5,
+      "category": "Transport",
+      "dateTime": "2024-12-19T12:58",
+      "email": "testlogin@gmail.com",
+      "id": 34,
+      "split": []
+    },
+    {
+      "title": "test hello",
+      "amount": 8000,
+      "category": "Utilities",
+      "dateTime": "2024-12-19T13:04",
+      "split": [],
+      "email": "testlogin@gmail.com",
+      "id": 36
     }
   ]
 }

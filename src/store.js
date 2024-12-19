@@ -44,7 +44,7 @@ const store = createStore({
       state.lastLogin = lastLogin;
       const encodeemail = window.btoa(email);
       sessionStorage.setItem("user", encodeemail);
-      
+
     },
     logout(state) {
       state.isLoggedIn = false;
@@ -82,6 +82,25 @@ const store = createStore({
   },
 
   actions: {
+
+    initializeUser({ dispatch }) {
+      dispatch("initializeUserSession");
+    },
+
+    async initializeUserSession(state) {
+      const users = await util.fetchUsers();
+      const encodedUser = sessionStorage.getItem("user");
+      if (encodedUser) {
+        const email = window.atob(encodedUser);
+        const user = users.find((user) => user.email === email);
+        console.log("user", user);
+        if (user) {
+          state.commit("login", user.email);
+          state.commit("setLastLogin", user.lastLogin);
+          state.commit("setUsername", user.username);
+        }
+      }
+    },
 
     async updateSplitExpenses(state, updatedSplitValue) {
       await util.updateSplitExpenses(updatedSplitValue);

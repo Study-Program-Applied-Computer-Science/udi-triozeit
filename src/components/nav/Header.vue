@@ -6,10 +6,10 @@
     <nav class="header__nav">
       <ul>
         <li>
-          <router-link to="/report">Report</router-link>
+          <router-link to="/expenses">Expenses</router-link>
         </li>
         <li>
-          <router-link to="/expenses">Expenses</router-link>
+          <router-link to="/report">Report</router-link>
         </li>
         <li v-if="!isLoggedIn">
           <router-link to="/signup">Register</router-link>

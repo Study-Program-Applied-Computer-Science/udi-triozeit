@@ -38,7 +38,7 @@
       "email": "yathish@gmail.com",
       "password": "$2a$10$7olotOlIe57fh3RP1GvZTeHWPhWTe551Z8v6pRLqRqhuqYbPHYq6q",
       "id": 6,
-      "lastLogin": "12/19/2024, 3:24:28 AM"
+      "lastLogin": "12/19/2024, 11:05:17 PM"
     },
     {
       "username": "MAnu",
@@ -302,6 +302,17 @@
       "split": [],
       "email": "testlogin@gmail.com",
       "id": 42
+    },
+    {
+      "title": "new test",
+      "amount": 1000,
+      "category": "Transport",
+      "dateTime": "2024-12-19T22:05",
+      "split": [],
+      "createdAt": "2024-12-19",
+      "createdDateTime": "2024-12-19T22:05:29.454Z",
+      "email": "yathish@gmail.com",
+      "id": 43
     }
   ]
 }

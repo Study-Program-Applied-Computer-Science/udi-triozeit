@@ -5,38 +5,43 @@
         {{ username }}'s Expenses
       </h2>
       <div class="flex gap-8">
-        <div class="w-full flex flex-col gap-4 justify-around">
-            <div class="flex items-center gap-4">
-              <input
-                type="text"
-                v-model="searchExpense"
-                placeholder="Enter amount"
-                class="w-full border-gray-300 rounded-md shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500"
-              />
-              <button
-                @click="openModal()"
-                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-md shadow transition duration-300 whitespace-nowrap"
-                style="height: 40px;"
-              >
-                Add Expense
-              </button>
-            </div>
-          <div
-            v-for="expense in searchAndFilter"
-            :key="expense.id"
-            @dblclick="handleToggleDetailView(expense)"
-            class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border-2 border-gray-200 shadow-md"
-          >
+
+        <div class="w-2/3 flex flex-col gap-4 justify-around">
+          <label for="searchExpense" class="block text-sm font-medium text-gray-700">Search Expense</label>
+          <input type="text" id="searchExpense" v-model="searchExpense" placeholder="Enter the title"
+            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+
+          <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
+          <input type="Date" id="startDate" v-model="startDate"
+            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+
+          <label for="endDate" class="block text-sm font-medium text-gray-700">End Date</label>
+          <input type="Date" id="endDate" v-model="endDate"
+            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+
+          <label for="selectedCategory" class="block text-sm font-medium text-gray-700">Select Category</label>
+          <select id="selectedCategory" v-model="selectedCategory"
+            class="mt-1 w-full border-gray-300 rounded-sm shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            <option value="">All Catgories</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Other">Other</option>
+          </select>
+
+
+
+          <div v-for="expense in searchAndFilter" :key="expense.id" @dblclick="handleToggleDetailView(expense)"
+            class="flex items-center justify-between bg-gray-50 p-6 rounded-lg border-2 border-gray-200 shadow-md">
             <div class="flex items-center gap-4 w-full" @dblclick="handleToggleDetailView(expense)">
               <span class="font-bold text-lg flex-shrink-0 w-1/4">{{ expense.title }}</span>
               <span
-                class="bg-green-500 text-white rounded-full px-4 py-1 text-sm font-semibold flex-shrink-0 w-1/5 text-center"
-              >
+                class="bg-green-500 text-white rounded-full px-4 py-1 text-sm font-semibold flex-shrink-0 w-1/5 text-center">
                 €{{ expense.amount }}
               </span>
               <span
-                class="bg-blue-500 text-white rounded-full px-4 py-1 text-sm font-semibold flex-shrink-0 w-1/5 text-center"
-              >
+                class="bg-blue-500 text-white rounded-full px-4 py-1 text-sm font-semibold flex-shrink-0 w-1/5 text-center">
                 {{ expense.category || "No Category" }}
               </span>
               <span class="text-gray-600 text-sm w-1/4 text-right flex-shrink-0">
@@ -45,16 +50,12 @@
             </div>
 
             <div class="flex gap-2">
-              <button
-                @click="editExpense(expense)"
-                class="bg-blue-100 hover:bg-blue-200 text-blue-600 p-3 rounded-lg transition duration-300"
-              >
+              <button @click="editExpense(expense)"
+                class="bg-blue-100 hover:bg-blue-200 text-blue-600 p-3 rounded-lg transition duration-300">
                 <i class="fas fa-edit"></i>
               </button>
-              <button
-                @click="deleteExpense(expense.id)"
-                class="bg-red-100 hover:bg-red-200 text-red-600 p-3 rounded-lg transition duration-300"
-              >
+              <button @click="deleteExpense(expense.id)"
+                class="bg-red-100 hover:bg-red-200 text-red-600 p-3 rounded-lg transition duration-300">
                 <i class="fas fa-trash"></i>
               </button>
             </div>
@@ -75,19 +76,12 @@
     </div>
 
 
-    <ExpenseDetail
-      :expense="selectedExpense"
-      :showDetailModal="showDetailModal"
-      @close-modal="closeDetailModal"
-    />
+    <ExpenseDetail :expense="selectedExpense" :showDetailModal="showDetailModal" @close-modal="closeDetailModal" />
 
 
     <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div class="bg-white p-8 rounded-lg w-full max-w-md shadow-lg relative">
-        <button
-          @click="closeModal"
-          class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
-        >
+        <button @click="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">
           &times;
         </button>
         <h3 class="text-2xl font-bold mb-2 text-center">
@@ -97,24 +91,12 @@
           {{ errorMessage }}
         </p>
         <form @submit.prevent="addExpense" class="flex flex-col gap-4">
-          <input
-            v-model="newExpense.title"
-            placeholder="Expense Title"
-            class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
-            required
-          />
-          <input
-            v-model.number="newExpense.amount"
-            placeholder="Amount"
-            type="number"
-            class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
-            required
-          />
-          <select
-            v-model="newExpense.category"
-            class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
-            required
-          >
+          <input v-model="newExpense.title" placeholder="Expense Title"
+            class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required />
+          <input v-model.number="newExpense.amount" placeholder="Amount" type="number"
+            class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required />
+          <select v-model="newExpense.category"
+            class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required>
             <option value="" disabled>Select Category</option>
             <option value="Food">Food</option>
             <option value="Transport">Transport</option>
@@ -122,24 +104,14 @@
             <option value="Utilities">Utilities</option>
             <option value="Other">Other</option>
           </select>
-          <input
-            v-model="newExpense.dateTime"
-            type="datetime-local"
-            class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
-            required
-          />
+          <input v-model="newExpense.dateTime" type="datetime-local"
+            class="p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500" required />
           <div class="flex justify-end gap-2">
-            <button
-              @click="closeModal"
-              type="button"
-              class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-lg"
-            >
+            <button @click="closeModal" type="button"
+              class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-lg">
               Cancel
             </button>
-            <button
-              type="submit"
-              class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg"
-            >
+            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg">
               {{ editingId ? "Update" : "Add" }}
             </button>
           </div>

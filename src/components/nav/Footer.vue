@@ -1,7 +1,7 @@
 <template>
     <footer class="footer">
         <div class="info">
-            <p>Carefully Cooked by <a href="#">Triozeit</a><sup>TM</sup></p>
+            <p>Carefully Cooked by <a href="#">Triozeit</a></p>
         </div>
 
         <div class="conditions">
@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .footer {
-    background-color: #006478;
+    background-color: #0c0c0c;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

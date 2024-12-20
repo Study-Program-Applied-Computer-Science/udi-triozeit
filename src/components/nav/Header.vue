@@ -2,7 +2,7 @@
   <header class="header">
 
     <div class="logo">
-      <router-link to="/"><img src="../../assets/accounting.png" alt=""></router-link>
+      <router-link to="/"><img src="../../assets/accounting.png" alt="" style="filter: invert(1);"></router-link>
     </div>
 
     <div class="title">
@@ -67,7 +67,7 @@ export default {
   align-items: center;
   padding: 02rem;
   height: 5rem;
-  background-color: #006478;
+  background-color: #0a0a0a;
   color: #FFF8E1;
   position: sticky;
   top: 0;

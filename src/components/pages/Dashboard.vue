@@ -46,9 +46,6 @@
         class="absolute right-20 max-w-sm md:max-w-md lg:max-w-lg w-full h-auto"
         style="transform: translateY(-400px);" />
     </div>
-    <!-- <img src="@/assets/hero.png" alt="Hero Illustration"
-      class="absolute bottom-10 right-20 max-w-sm md:max-w-md lg:max-w-lg w-full h-auto"
-      style="transform: translateY(-400px);" /> -->
   </div>
 </template>
 

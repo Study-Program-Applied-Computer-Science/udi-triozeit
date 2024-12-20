@@ -45,7 +45,7 @@
                     </div>
                     <div class="flex justify-end">
                         <button @click="saveSplit"
-                            class="bg-blue-500 text-white px-4 py-2 rounded mt-2 hover:bg-blue-600 transition duration-300">Save</button>
+                            class="bg-[#006478] hover:bg-[#004d5a] text-white px-4 py-2 rounded mt-2  transition duration-300">Save</button>
                         <button @click="closeSplit"
                             class="bg-gray-500 text-white px-4 py-2 rounded mt-2 ml-2 hover:bg-gray-600 transition duration-300">Cancel</button>
                     </div>
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <button @click="closeModal"
-                class="bg-blue-500 text-white px-4 py-2 rounded mt-4 w-full hover:bg-blue-600 transition duration-300">Close</button>
+                class="bg-[#006478] hover:bg-[#004d5a] text-white px-4 py-2 rounded mt-4 w-full transition duration-300">Close</button>
         </div>
     </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-5xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-lg">
     <button @click="$router.go(-1)"
-      class="text-blue-500 font-bold py-2 px-4 rounded-md transition duration-300 flex items-center gap-2">
+      class="text-[#006478]  font-bold py-2 px-4 rounded-md transition duration-300 flex items-center gap-2">
       <i class="fas fa-arrow-left"></i> Back
     </button>
     <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Expense Report</h2>
@@ -38,7 +38,7 @@
 
     <div class="flex justify-center mt-6">
       <button @click="downloadFile"
-        class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-lg rounded-lg shadow-md transition duration-300">
+        class="bg-[#006478] hover:bg-[#004d5a] text-white font-bold py-3 px-8 text-lg rounded-lg shadow-md transition duration-300">
         Download the Report
       </button>
     </div>

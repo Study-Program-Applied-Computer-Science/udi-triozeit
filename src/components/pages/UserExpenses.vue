@@ -2,7 +2,7 @@
   <div class="max-w-7xl mx-auto mt-12 my-auto p-6 min-h-fit">
     <div class="bg-white p-8 rounded-lg shadow-md">
       <button @click="$router.go(-1)"
-        class="text-blue-500 font-bold py-2 px-4 rounded-md transition duration-300 flex items-center gap-2">
+        class="text-[#006478] font-bold py-2 px-4 rounded-md transition duration-300 flex items-center gap-2">
         <i class="fas fa-arrow-left"></i> Back </button>
       <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">
         {{ username }}'s Expenses
@@ -50,7 +50,7 @@
             </div>
 
             <button @click="openModal()" :disabled="addButtonLimit === 0"
-              :class="{ 'bg-green-500 hover:bg-green-600': addButtonLimit !== 0, 'bg-gray-500 cursor-not-allowed': addButtonLimit === 0 }"
+              :class="{ 'bg-[#006478] hover:bg-[#004d5a]': addButtonLimit !== 0, 'bg-gray-500 cursor-not-allowed': addButtonLimit === 0 }"
               class="text-white font-bold py-2 px-6 rounded-md shadow transition duration-300 whitespace-nowrap"
               style="height: 40px;">
               Add Expense

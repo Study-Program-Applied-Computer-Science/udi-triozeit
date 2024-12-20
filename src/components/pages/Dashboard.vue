@@ -34,7 +34,7 @@
           Start tracking your expenses today and take control of your finances like never before.
         </p>
         <router-link :to="isLoggedIn ? '/expenses' : '/login'"
-          class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+          class="bg-[#006478] hover:bg-[#004d5a] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
           Get Started
         </router-link>
       </div>

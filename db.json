@@ -47,7 +47,16 @@
       "id": 7,
       "streak": 2,
       "addLimit": 7,
-      "lastLogin": "12/19/2024, 8:10:56 PM"
+      "lastLogin": "12/20/2024, 2:46:20 AM"
+    },
+    {
+      "username": "MManu",
+      "email": "manu.j@gmail.com",
+      "password": "$2a$10$GiuC9usV3X9lKdSz1sEXkOFItZobLrEhUB1Lgg85p396iidDs1gtq",
+      "createdAt": "12/20/2024, 12:28:47 AM",
+      "streak": 0,
+      "id": 8,
+      "lastLogin": "12/20/2024, 12:29:16 AM"
     }
   ],
   "expenses": [

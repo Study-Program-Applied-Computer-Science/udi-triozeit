@@ -46,49 +46,40 @@
         class="absolute right-20 max-w-sm md:max-w-md lg:max-w-lg w-full h-auto"
         style="transform: translateY(-400px);" />
     </div>
-    <!-- <img src="@/assets/hero.png" alt="Hero Illustration"
-      class="absolute bottom-10 right-20 max-w-sm md:max-w-md lg:max-w-lg w-full h-auto"
-      style="transform: translateY(-400px);" /> -->
   </div>
 </template>
 
-
-  <script>
-  export default {
-    name: "DashboardComponent",
-    created() {
-      this.$store.dispatch("initializeUser");
+<script>
+export default {
+  name: "DashboardComponent",
+  created() {
+    this.$store.dispatch("initializeUser");
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.checkLoginStatus;
     },
-  };
-  </script>
-  
-  <style scoped>
-  body,
-  html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
-  
-  img {
-    object-fit: contain;
-  }
-  
-  h1,
-  p {
-    text-align: center;
-  }
-  
-  .flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .mt-6 {
-    margin-top: 1.5rem;
-  }
-  </style>
-  
-  
+  },
+};
+</script>
 
+<style scoped>
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+img {
+  z-index: 1;
+  /* Ensures the image stays behind the text */
+}
+
+h1,
+p {
+  text-align: center;
+  /* Aligns text content to the center */
+}
+</style>

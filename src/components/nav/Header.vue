@@ -11,10 +11,10 @@
 
     <nav class="header__nav">
       <ul>
-        <li>
+        <li v-if="isLoggedIn">
           <router-link to="/expenses">Expenses</router-link>
         </li>
-        <li>
+        <li v-if="isLoggedIn">
           <router-link to="/report">Report</router-link>
         </li>
         <li v-if="!isLoggedIn">

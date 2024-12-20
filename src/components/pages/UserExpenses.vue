@@ -49,12 +49,10 @@
         </div>
 
         <div class="flex justify-end col-span-1">
-          <button @click="openModal()" :disabled="addButtonLimit === 0"
-            :class="{
-              'bg-black hover:bg-gray-800': addButtonLimit !== 0,
-              'bg-gray-500 cursor-not-allowed': addButtonLimit === 0
-            }"
-            class="text-white font-bold py-2 px-6 rounded-md shadow transition duration-300">
+          <button @click="openModal()" :disabled="addButtonLimit === 0" :class="{
+            'bg-black hover:bg-gray-800': addButtonLimit !== 0,
+            'bg-gray-500 cursor-not-allowed': addButtonLimit === 0
+          }" class="text-white font-bold py-2 px-6 rounded-md shadow transition duration-300">
             Add Expense
           </button>
         </div>
@@ -278,7 +276,7 @@ export default {
     calculateAddLimit(value) {
       const today = new Date().toISOString().slice(0, 10);
       const todayExpenses = this.$store.getters.filteredExpenses.filter(expense =>
-        expense.dateTime.slice(0, 10) === today
+        expense.createdAt === today
       );
       const remainingLimit = value - todayExpenses.length;
       if (remainingLimit <= 0) {
@@ -353,7 +351,7 @@ export default {
         this.errorMessage = "Expense Title cannot be empty!";
         return;
       }
-      this.newExpense = { ...this.newExpense, split: [], createdAt: new Date().toISOString().slice(0, 10),createdDateTime: new Date().toISOString() };
+      this.newExpense = { ...this.newExpense, split: [], createdAt: new Date().toISOString().slice(0, 10), createdDateTime: new Date().toISOString() };
       if (this.editingId) {
         await this.$store.dispatch("updateExpense", { ...this.newExpense, id: this.editingId });
       } else {

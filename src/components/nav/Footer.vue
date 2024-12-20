@@ -1,7 +1,7 @@
 <template>
     <footer class="footer">
         <div class="info">
-            <p>Carefully Cooked by <a href="#">Triozeit</a><sup>TM</sup></p>
+            <p>Carefully Cooked by <a href="#">Triozeit</a></p>
         </div>
 
         <div class="conditions">

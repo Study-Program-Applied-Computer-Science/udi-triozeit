@@ -19,7 +19,7 @@
             </div>
 
             <div class="flex items-center space-x-2">
-              <label for="startDate" class="text-sm font-medium text-gray-700 min-w-[100px] text-right">
+              <label for="startDate" class="text-sm font-medium text-gray-700 min-w-[65px] text-right">
                 Start Date
               </label>
               <input type="date" id="startDate" v-model="startDate"
@@ -27,7 +27,7 @@
             </div>
 
             <div class="flex items-center space-x-2">
-              <label for="endDate" class="text-sm font-medium text-gray-700 min-w-[100px] text-right">
+              <label for="endDate" class="text-sm font-medium text-gray-700 min-w-[80px] text-right">
                 End Date
               </label>
               <input type="date" id="endDate" v-model="endDate"

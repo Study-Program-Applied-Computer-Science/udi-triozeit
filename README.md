@@ -41,7 +41,7 @@ Below are the features that each team member handled, detailing their specific c
     - Deleting expenses.
     - Added validation to ensure not empty or whitespace.
 
-- **Expense Reports: 
+- **Expense Reports:** 
   - Integrated expense categorization to better organize and analyze expenses within the reports.
 
 - **Daily Tracking for Recent Activity:** 

@@ -1,53 +1,13 @@
 {
   "users": [
     {
-      "username": "test1",
-      "email": "test1@gmail.com",
-      "password": "$2a$10$HDSNm8ZxEhihDjlUcB73Q.mRJPPyCRsOkM6dHGbq9upOiMrthP/um",
-      "id": 1,
-      "lastLogin": "12/18/2024, 3:41:25 AM"
-    },
-    {
-      "username": "test3",
-      "email": "test3@gmail.com",
-      "password": "$2a$10$rmtC97N8JJy6V2cC2TaBWeb22zLgFiHG0VUg5MwmZFzuU.uB9ZlQe",
-      "id": 2,
-      "lastLogin": "12/18/2024, 3:45:12 AM"
-    },
-    {
-      "username": "test2",
-      "email": "test2@gmail.com",
-      "password": "$2a$10$3bkHVH0omQMbMblo3COqeupb0uweCaZkjAZGXoe.7IARGDy4yXRyq",
-      "id": 3
-    },
-    {
-      "username": "test1234",
-      "email": "abcd@gmail.com",
-      "password": "$2a$10$NKhAEn0c7McTHmjh3pcTHOGszQVH4Cr0GV11e7QdOg285Ois87Sfy",
-      "id": 4
-    },
-    {
-      "username": "test24545",
-      "email": "newtest@gmail.com",
-      "password": "$2a$10$n9nE09oDTSkM5tAs.tczsu4SHlpdsSk6t4IbfT/10AeaOZPddmdwq",
-      "id": 5,
-      "lastLogin": "12/19/2024, 3:06:21 AM"
-    },
-    {
-      "username": "yathish",
-      "email": "yathish@gmail.com",
-      "password": "$2a$10$7olotOlIe57fh3RP1GvZTeHWPhWTe551Z8v6pRLqRqhuqYbPHYq6q",
-      "id": 6,
-      "lastLogin": "12/19/2024, 11:05:17 PM"
-    },
-    {
       "username": "MAnu",
       "email": "testlogin@gmail.com",
       "password": "$2a$10$iSWwnlnnI1KnPqXSCV/.Auhm7EjaM.VkdoiGa9a9ECRQAG6r0hP6m",
       "id": 7,
       "streak": 2,
       "addLimit": 7,
-      "lastLogin": "12/20/2024, 12:27:08 AM"
+      "lastLogin": "12/20/2024, 7:58:52 AM"
     },
     {
       "username": "MManu",
@@ -56,272 +16,31 @@
       "createdAt": "12/20/2024, 12:28:47 AM",
       "streak": 0,
       "id": 8,
-      "lastLogin": "12/20/2024, 12:29:16 AM"
+      "lastLogin": "12/20/2024, 11:19:27 AM"
     }
   ],
   "expenses": [
     {
-      "title": "Groceries",
-      "amount": 0,
-      "username": "test123",
-      "id": 1
-    },
-    {
-      "id": 2,
-      "title": "Electricity Bill",
-      "amount": 100,
-      "username": "test123"
-    },
-    {
-      "title": "dd",
-      "amount": 0,
-      "username": "test123",
-      "id": 3
-    },
-    {
-      "title": "test1",
-      "amount": 4545,
-      "category": "Food",
-      "username": "test1234",
-      "id": 4
-    },
-    {
-      "title": "test22",
-      "amount": 45451,
-      "username": "test1234",
-      "id": 5
-    },
-    {
-      "title": "sdasdsa",
-      "amount": 4545,
-      "category": "Transport",
-      "username": "test24545",
-      "id": 6
-    },
-    {
-      "title": "sdasdas",
-      "amount": 45,
-      "category": "Transport",
-      "id": 7
-    },
-    {
-      "title": "sdasdasd",
-      "amount": 78787,
-      "category": "Entertainment",
-      "email": "newtest@gmail.com",
-      "id": 8
-    },
-    {
-      "title": "sdsadsdas",
-      "amount": 787,
-      "category": "Utilities",
-      "email": "newtest@gmail.com",
-      "id": 9
-    },
-    {
-      "title": "testhjgsdhj",
-      "amount": 46546,
-      "category": "Entertainment",
-      "email": "abcd@gmail.com",
-      "id": 10
-    },
-    {
-      "title": "hskadhjaskj",
-      "amount": 555,
-      "category": "Utilities",
-      "email": "abcd@gmail.com",
-      "id": 11
-    },
-    {
-      "title": "hskajdhksjhkd",
-      "amount": 4547,
-      "category": "Food",
-      "email": "abcd@gmail.com",
-      "id": 12
-    },
-    {
-      "title": "paris",
-      "amount": 50000,
-      "category": "Entertainment",
-      "dateTime": "2024-12-16T05:55",
-      "email": "yathish@gmail.com",
-      "id": 19
-    },
-    {
-      "title": "Rewe",
-      "amount": 50,
-      "category": "Food",
-      "dateTime": "2024-12-16T05:51",
-      "email": "yathish@gmail.com",
-      "id": 20
-    },
-    {
-      "title": "new",
+      "title": "Fruits",
       "amount": 10,
-      "category": "Utilities",
-      "dateTime": "2024-12-12T08:53",
-      "email": "yathish@gmail.com",
-      "id": 21
-    },
-    {
-      "title": "old expense",
-      "amount": 150,
-      "category": "Entertainment",
-      "dateTime": "2024-12-15T01:21",
-      "email": "yathish@gmail.com",
-      "id": 22
-    },
-    {
-      "title": "ghghgh",
-      "amount": 45,
-      "category": "Transport",
-      "dateTime": "2024-12-16T01:36",
-      "email": "yathish@gmail.com",
-      "id": 24
-    },
-    {
-      "title": "Dummy Expenses",
-      "amount": 10,
-      "category": "Entertainment",
-      "dateTime": "2024-12-22T13:15",
-      "email": null,
-      "id": 25,
+      "category": "Food",
+      "dateTime": "2024-12-20T02:27",
       "split": [
         {
-          "id": 1,
-          "amount": 5,
-          "notes": "For food"
+          "amount": 2,
+          "notes": "apple",
+          "id": 1734661676393
         },
         {
-          "id": 2,
-          "amount": 5,
-          "notes": "nothing"
-        }
-      ]
-    },
-    {
-      "title": "TEst split 2",
-      "amount": 300,
-      "category": "Entertainment",
-      "dateTime": "2024-12-13T15:58",
-      "split": [
-        {
-          "amount": 50,
-          "notes": "test add update",
-          "id": 1734398497348
-        },
-        {
-          "amount": 20,
-          "notes": "test 20 ",
-          "id": 1734398865307
-        },
-        {
-          "amount": 30,
-          "notes": "notes 30 added",
-          "id": 1734399022220
-        },
-        {
-          "amount": 40,
-          "notes": "here is my 40 ",
-          "id": 1734399106847
+          "amount": 6,
+          "notes": "Bananna",
+          "id": 1734661710309
         }
       ],
-      "email": null,
-      "id": 27
-    },
-    {
-      "title": "test update her",
-      "amount": 500,
-      "category": "Food",
-      "dateTime": "2024-12-17T01:32",
-      "split": [],
-      "email": null,
-      "id": 29
-    },
-    {
-      "title": "test update",
-      "amount": 10000,
-      "category": "Utilities",
-      "dateTime": "2024-12-17T01:34",
-      "split": [],
-      "email": null,
-      "id": 30
-    },
-    {
-      "title": "addd",
-      "amount": 1000,
-      "category": "Transport",
-      "dateTime": "2024-12-19T00:38",
-      "email": {
-        "email": "yathish@gmail.com",
-        "username": "yathish",
-        "lastLogin": "12/19/2024, 1:38:06 AM"
-      },
-      "id": 32
-    },
-    {
-      "title": "dubai",
-      "amount": 100,
-      "category": "Transport",
-      "dateTime": "2024-12-19T02:25",
-      "email": "yathish@gmail.com",
-      "id": 33
-    },
-    {
-      "title": "Previous Day Expense 1",
-      "amount": 150,
-      "category": "Food",
-      "dateTime": "2024-12-18T10:00",
-      "email": "testlogin@gmail.com",
-      "id": 35,
-      "split": []
-    },
-    {
-      "title": "Previous Day Expense 2",
-      "amount": 200,
-      "category": "Transport",
-      "dateTime": "2024-12-18T14:30",
-      "email": "testlogin@gmail.com",
-      "id": 37,
-      "split": []
-    },
-    {
-      "title": "3424",
-      "amount": 23,
-      "category": "Transport",
-      "dateTime": "2024-12-19T19:18",
-      "split": [],
-      "email": "testlogin@gmail.com",
-      "id": 40
-    },
-    {
-      "title": "dfgdfgdgf",
-      "amount": 34,
-      "category": "Utilities",
-      "dateTime": "2024-12-19T19:20",
-      "split": [],
-      "email": "testlogin@gmail.com",
-      "id": 41
-    },
-    {
-      "title": "6776",
-      "amount": 34423,
-      "category": "Utilities",
-      "dateTime": "2024-12-19T19:20",
-      "split": [],
-      "email": "testlogin@gmail.com",
-      "id": 42
-    },
-    {
-      "title": "new test",
-      "amount": 1000,
-      "category": "Transport",
-      "dateTime": "2024-12-19T22:05",
-      "split": [],
-      "createdAt": "2024-12-19",
-      "createdDateTime": "2024-12-19T22:05:29.454Z",
-      "email": "yathish@gmail.com",
-      "id": 43
+      "createdAt": "2024-12-20",
+      "createdDateTime": "2024-12-20T02:27:40.066Z",
+      "email": "manu.j@gmail.com",
+      "id": 45
     }
   ]
 }

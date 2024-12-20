@@ -215,23 +215,24 @@ export default {
       }
 
       if (this.startDate || this.endDate) {
-        if (this.startDate && this.endDate) {
-          filterData = filterData.filter((expense) => {
-            return expense.dateTime >= this.startDate && expense.dateTime <= this.endDate;
-          })
-        }
-
-        else if (this.startDate) {
-          filterData = filterData.filter((expense) => {
-            return expense.dateTime >= this.startDate;
-          })
-        }
-        else {
-          filterData = filterData.filter((expense) => {
-            return expense.dateTime <= this.endDate;
-          })
-
-        }
+        filterData = filterData.filter((expense) => {
+          const expenseDate = new Date(expense.dateTime).toISOString().slice(0, 10);
+          let startDate = null;
+          let endDate = null;
+          if (this.startDate) {
+            startDate = new Date(this.startDate).toISOString().slice(0, 10);
+          }
+          if (this.endDate) {
+            endDate = new Date(this.endDate).toISOString().slice(0, 10);
+          }
+          if (startDate && endDate) {
+            return expenseDate >= startDate && expenseDate <= endDate;
+          } else if (startDate) {
+            return expenseDate >= startDate;
+          } else if (endDate) {
+            return expenseDate <= endDate;
+          }
+        });
       }
 
       if (this.sortOrder) {
